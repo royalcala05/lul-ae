@@ -5,7 +5,8 @@ import probateImg from "../assets/2025_Probate.png";
 import lulLettersImg from "../assets/lul_letters 2.png";
 import aeLogoImg from "../assets/AE logo.png";
 import foundersFlagImg from "../assets/founders_flag.png";
-
+import crest_LULImg from "../assets/Crest_and_LUL.png";
+import mg from  "../assets/tabling.png";
 export default function Home() {
   return (
     <div className="bg-sand">
@@ -64,15 +65,14 @@ export default function Home() {
             </div>
             <div className="col-lg-6">
               <div className="d-flex align-items-center gap-2 mb-2">
-                <img src={aeLogoImg} alt="" style={{ width: 28, height: 28, objectFit: "contain" }} />
+                <img src={crest_LULImg} alt="" style={{ width: "auto", height: 100, objectFit: "contain" }} />
                 <div className="text-muted small">Chartered on December 10th, 1999</div>
               </div>
               <h2 className="fw-bold" style={{ color: "var(--lul-brown)" }}>
                 The Agonizing Alpha Epsilon Chapter at the University of Virginia
               </h2>
               <p className="text-muted small">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor.
-                Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.
+                sala sala sala salav sala sala
               </p>
               <button className="btn btn-lul">Learn More</button>
             </div>

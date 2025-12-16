@@ -47,7 +47,7 @@ export default function SiteNavbar() {
             <img
               src={crestBrandImg}
               alt="La Unidad Latina — Lambda Upsilon Lambda"
-              style={{ height: 100, width: "auto", objectFit: "contain" }}
+              style={{ height: 75, width: "auto", objectFit: "contain" }}
             />
           </NavLink>
 
