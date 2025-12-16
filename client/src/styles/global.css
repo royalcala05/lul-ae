@@ -1,0 +1,40 @@
+html, body { height: 100%; }
+body{
+  background: var(--lul-sand);
+  color: #1b1b1b;
+}
+
+.section-pad{
+  padding: 5rem 0;
+}
+
+.lul-h1{
+  letter-spacing: .08em;
+  font-weight: 700;
+  color: var(--lul-gold);
+}
+
+.lul-card{
+  background: var(--lul-card);
+  border-radius: var(--lul-radius);
+  box-shadow: var(--lul-shadow);
+}
+
+.fade-in{
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.fade-in.is-visible{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* hover “protrude” effect from your notes */
+.hover-lift{
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.hover-lift:hover{
+  transform: translateY(-8px);
+  box-shadow: 0 22px 55px rgba(0,0,0,.18);
+}
