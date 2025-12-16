@@ -1,91 +1,86 @@
 import { NavLink } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 
-import aeLogoImg from "../assets/AE logo.png";
 import ellipseImg from "../assets/Ellipse 1.png";
 import globeImg from "../assets/globe 1.png";
+import crestBrandImg from "../assets/Crest_and_LUL.png";
 
 export default function SiteNavbar() {
-  return (
-    <nav className="navbar navbar-expand-lg bg-white border-bottom">
-      <div className="container py-2 d-flex align-items-center">
+  const [hidden, setHidden] = useState(false);
+  const lastY = useRef(0);
+  const ticking = useRef(false);
 
-        {/* LEFT: Logo + name */}
-        <NavLink className="navbar-brand d-flex align-items-center gap-2" to="/">
-          <img
-            src={aeLogoImg}
-            alt="AE Logo"
-            style={{ width: 40, height: 40, objectFit: "contain" }}
-          />
-          <div className="small">
-            <div className="fw-bold" style={{ lineHeight: 1.1 }}>
-              LA UNIDAD LATINA
-            </div>
-            <div className="text-muted" style={{ fontSize: 12, lineHeight: 1.1 }}>
-              Lambda Upsilon Lambda
+  useEffect(() => {
+    lastY.current = window.scrollY;
+
+    const onScroll = () => {
+      if (ticking.current) return;
+      ticking.current = true;
+
+      window.requestAnimationFrame(() => {
+        const y = window.scrollY;
+        const dy = y - lastY.current;
+
+        // Always show near the very top
+        if (y < 30) {
+          setHidden(false);
+        } else {
+          // Add a small deadzone to prevent flicker
+          if (dy > 8) setHidden(true);     // scrolling down -> hide
+          else if (dy < -8) setHidden(false); // scrolling up -> show
+        }
+
+        lastY.current = y;
+        ticking.current = false;
+      });
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <div className={`lul-nav-wrap ${hidden ? "is-hidden" : ""}`}>
+      <nav className="lul-nav-pill navbar navbar-expand-lg">
+        <div className="container-fluid px-3 d-flex align-items-center">
+          <NavLink className="navbar-brand d-flex align-items-center" to="/">
+            <img
+              src={crestBrandImg}
+              alt="La Unidad Latina — Lambda Upsilon Lambda"
+              style={{ height: 100, width: "auto", objectFit: "contain" }}
+            />
+          </NavLink>
+
+
+          <button
+            className="navbar-toggler border-0 ms-auto"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#lulNav"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+
+          <div className="collapse navbar-collapse" id="lulNav">
+            <ul className="navbar-nav mx-auto gap-lg-3">
+              <li className="nav-item"><NavLink className="nav-link" to="/">Home</NavLink></li>
+              <li className="nav-item"><NavLink className="nav-link" to="/alpha-epsilon">Alpha Epsilon</NavLink></li>
+              <li className="nav-item"><NavLink className="nav-link" to="/philanthropy">Philanthropy</NavLink></li>
+              <li className="nav-item"><NavLink className="nav-link" to="/events">Events</NavLink></li>
+              <li className="nav-item"><NavLink className="nav-link" to="/contact">Contact us</NavLink></li>
+            </ul>
+
+            <div className="d-flex align-items-center gap-3 ms-lg-3">
+              <button className="border-0 bg-transparent p-0" aria-label="Menu">
+                <img src={ellipseImg} alt="" style={{ width: 34, height: 34 }} />
+              </button>
+              <button className="border-0 bg-transparent p-0" aria-label="Language">
+                <img src={globeImg} alt="Language" style={{ width: 34, height: 34 }} />
+              </button>
             </div>
           </div>
-        </NavLink>
-
-        {/* MOBILE TOGGLER (hidden on desktop) */}
-        <button
-          className="navbar-toggler border-0"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#lulNav"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-
-        {/* CENTER: Nav links */}
-        <div className="collapse navbar-collapse" id="lulNav">
-          <ul className="navbar-nav mx-auto gap-lg-3">
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/">Home</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/alpha-epsilon">Alpha Epsilon</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/philanthropy">Philanthropy</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/events">Events</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/contact">Contact us</NavLink>
-            </li>
-          </ul>
         </div>
-
-        {/* RIGHT: Icons */}
-        <div className="d-flex align-items-center gap-3">
-
-          {/* Ellipse icon */}
-          <button
-            className="border-0 bg-transparent p-0"
-            aria-label="Menu"
-          >
-            <img
-              src={ellipseImg}
-              alt=""
-              style={{ width: 36, height: 36 }}
-            />
-          </button>
-
-          {/* Globe icon */}
-          <button
-            className="border-0 bg-transparent p-0"
-            aria-label="Language"
-          >
-            <img
-              src={globeImg}
-              alt="Language"
-              style={{ width: 36, height: 36 }}
-            />
-          </button>
-
-        </div>
-      </div>
-    </nav>
+      </nav>
+    </div>
   );
 }

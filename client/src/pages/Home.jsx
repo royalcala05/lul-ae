@@ -12,8 +12,9 @@ export default function Home() {
 
       {/* HERO */}
       <section
+        id="hero"
         className="position-relative overflow-hidden"
-        style={{ minHeight: "70vh" }}
+        style={{ minHeight: "70vh", paddingTop: "120px" }}
       >
         {/* Background photo */}
         <img
@@ -45,35 +46,6 @@ export default function Home() {
         />
 
         {/* Content */}
-        <div className="container py-5 text-white position-relative" style={{ zIndex: 3 }}>
-          <div className="d-flex justify-content-center mb-3">
-            {/* AE badge */}
-            <img
-              src={aeLogoImg}
-              alt="AE Logo"
-              style={{ width: 74, height: 74, objectFit: "contain" }}
-            />
-          </div>
-
-          <h1 className="text-center fw-bold mb-1" style={{ letterSpacing: ".2em" }}>
-            A.E.
-          </h1>
-          <div className="text-center small mb-3" style={{ opacity: 0.9 }}>
-            Alpha Epsilon • University of Virginia
-          </div>
-
-          <div className="row justify-content-center">
-            <div className="col-lg-7 text-center">
-              <p className="small mb-0" style={{ opacity: 0.9 }}>
-                Welcome copy / mission blurb goes here. Keep it ~2–3 sentences like your design.
-              </p>
-            </div>
-          </div>
-
-          <div className="text-center mt-4">
-            <button className="btn btn-lul-red">SALAAAAA</button>
-          </div>
-        </div>
       </section>
 
       {/* ABOUT / FOUNDERS SECTION (uses founders_flag.png) */}

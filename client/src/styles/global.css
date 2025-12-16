@@ -2,6 +2,8 @@ html, body { height: 100%; }
 body{
   background: var(--lul-sand);
   color: #1b1b1b;
+  margin: 0;
+  padding: 0;
 }
 
 .section-pad{
@@ -37,4 +39,52 @@ body{
 .hover-lift:hover{
   transform: translateY(-8px);
   box-shadow: 0 22px 55px rgba(0,0,0,.18);
+
+}
+
+.lul-nav-wrap{
+  position: fixed;
+  top: 18px;
+  left: 0;
+  width: 100%;
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  pointer-events: none; /* wrapper ignores clicks */
+}
+
+.lul-nav-pill{
+  pointer-events: auto; /* pill is clickable */
+  width: min(1080px, calc(100% - 48px));
+  background: #fff;
+  border-radius: 999px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.18);
+  padding: 10px 14px;
+
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity .28s ease, transform .28s ease;
+  will-change: opacity, transform;
+}
+
+/* hidden state */
+.lul-nav-wrap.is-hidden .lul-nav-pill{
+  opacity: 0;
+  transform: translateY(-16px);
+}
+
+/* prevent "invisible but clickable" */
+.lul-nav-wrap.is-hidden{
+  pointer-events: none;
+}
+
+.lul-nav-logo{
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .lul-nav-pill{ transition: none !important; }
 }
