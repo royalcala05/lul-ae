@@ -4,11 +4,22 @@ import { useEffect, useRef, useState } from "react";
 import ellipseImg from "../assets/Ellipse 1.png";
 import globeImg from "../assets/globe 1.png";
 import crestBrandImg from "../assets/Crest_and_LUL.png";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function SiteNavbar() {
+  
   const [hidden, setHidden] = useState(false);
   const lastY = useRef(0);
   const ticking = useRef(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+// Example: call this when you click a theme button
+function setTheme(theme) {
+  document.body.classList.remove("theme-classic","theme-institutional","theme-minimal");
+  document.body.classList.add(theme);
+}
+
+// setTheme("theme-classic")
 
   useEffect(() => {
     lastY.current = window.scrollY;
@@ -64,7 +75,26 @@ export default function SiteNavbar() {
           <div className="collapse navbar-collapse" id="lulNav">
             <ul className="navbar-nav mx-auto gap-lg-3">
               <li className="nav-item"><NavLink className="nav-link" to="/">Home</NavLink></li>
-              <li className="nav-item"><NavLink className="nav-link" to="/alpha-epsilon">Alpha Epsilon</NavLink></li>
+
+
+              {/* alpha episolon drop down  */}
+              <li className="nav-item">
+                <select
+                  className="nav-link nav-select border-0"
+                  id="alpha-epsilon-dropdown"
+                  value={
+                    location.pathname.startsWith("/alpha-epsilon")
+                      ? location.pathname
+                      : "/alpha-epsilon"
+                  }
+                  onChange={(e) => navigate(e.target.value)}
+                >
+                  <option value="/alpha-epsilon">Alpha Epsilon</option>
+                  <option value="/hermanos">Hermanos</option>
+                  <option value="/alpha-epsilon/history">History</option>
+                </select>
+              </li>
+
               <li className="nav-item"><NavLink className="nav-link" to="/philanthropy">Philanthropy</NavLink></li>
               <li className="nav-item"><NavLink className="nav-link" to="/events">Events</NavLink></li>
               <li className="nav-item"><NavLink className="nav-link" to="/contact">Contact us</NavLink></li>
