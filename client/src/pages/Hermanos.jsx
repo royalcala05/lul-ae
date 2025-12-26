@@ -1,226 +1,22 @@
-import defaultAvatar from "../assets/default-avatar.svg"; // or wherever yours lives
-import headshotImage from "../assets/headshot.jpeg";
-import leonImage from "../assets/leon.png";
-import chrisImage from "../assets/chris.JPG";
-const LINES = [
-  {
-    id: "alpha",
-    line: "ALPHA LINE",
-    term: "FALL 1999",
-    motto: "Las Seis Caras de Solidaridad",
-    hermanos: [
-      "Hermano Elmer Orlando Campos",
-      "Hermano Cameron Agyei DeBerry",
-      "Hermano Muhammad Shoaib Khan Afridi",
-      "Hermano Sakwa Sidney Bunyasi",
-      "Hermano Eduardo Jose Gonzalez",
-      "Hermano Fadi Bshara Shamma",
-    ],
-  },
-  {
-    id: "beta",
-    line: "BETA LINE",
-    term: "FALL 2000",
-    motto: "El Orgullo de Fuerzas Unidas",
-    hermanos: ["Hermano Carlos Augusto Williams"],
-  },
-  {
-    id: "gamma",
-    line: "GAMMA LINE",
-    term: "SPRING 2001",
-    motto: "Los Forjadores de Destinos",
-    hermanos: [
-      "Hermano Juan Carlos Lam",
-      "Hermano John Christopher Villalobos",
-      "Hermano Emmanuel Jeremy Smadja",
-    ],
-  },
-  {
-    id: "delta",
-    line: "DELTA LINE",
-    term: "SPRING 2004",
-    motto: "El Soldado Determinado",
-    hermanos: ["Hermano Tyrone Guy Jean"],
-  },
-  {
-    id: "epsilon",
-    line: "EPSILON LINE",
-    term: "FALL 2004",
-    motto: "El Guerrero Solitario",
-    hermanos: ["Hermano Muhammad Sayeid Hassan Tahir"],
-  },
-  {
-    id: "zeta",
-    line: "ZETA LINE",
-    term: "SPRING 2005",
-    motto: "Los Soldados de Fe",
-    hermanos: [
-      "Hermano Carlos Ricardo Rodriguez",
-      "Hermano Henry Jose Lopez",
-      "Hermano Alejandro Carlos Vega",
-      "Hermano Ernesto Javier Obando",
-    ],
-  },
-  {
-    id: "eta",
-    line: "ETA LINE",
-    term: "SPRING 2006",
-    motto: "Los Cinco Elementos Ocultos de Dos Mundos",
-    hermanos: [
-      "Hermano Jeffrey Charles",
-      "Hermano Andrew Stephen Robles",
-      "Hermano Isaac Anthony Rodriguez",
-      "Hermano Jason Nicklaus Puryear",
-    ],
-  },
-  {
-    id: "theta",
-    line: "THETA LINE",
-    term: "SPRING 2007",
-    motto: "Los Libertadores Luminosos",
-    hermanos: ["Hermano Patrick Anthony Martinez", "Hermano Gian Carlo Bustillo"],
-  },
-  {
-    id: "iota",
-    line: "IOTA LINE",
-    term: "SPRING 2008",
-    motto: "Os Sobreventes Valientes",
-    hermanos: [
-      "Hermano Andrius Ulices Guadamuz",
-      "Hermano Alvaro Fountura Silva Neto",
-    ],
-  },
-  {
-    id: "kappa",
-    line: "KAPPA LINE",
-    term: "SPRING 2010",
-    motto: "Los Triunfadores Inolvidables",
-    hermanos: ["Hermano Wilson Christopher Ventura", "Hermano Ronald Bladhimir Hernandez"],
-  },
-  {
-    id: "lambda",
-    line: "LAMBDA LINE",
-    term: "SPRING 2011",
-    motto: "Las Voces Legendarias",
-    hermanos: ["Hermano David Andre Tinta", "Hermano Kelvin Rafael Grullon"],
-  },
-  {
-    id: "mu",
-    line: "MU LINE",
-    term: "SPRING 2013",
-    motto: "El Gladiador Invencible",
-    hermanos: ["Hermano Nicholas Jules Farias"],
-  },
-  {
-    id: "nu",
-    line: "NU LINE",
-    term: "SPRING 2014",
-    motto: "Las Caras del Sacrificio",
-    hermanos: ["Hermano Cristian Jacobo Hernandez", "Hermano Andre Eduardo Sanabia"],
-  },
-  {
-    id: "xi",
-    line: "XI LINE",
-    term: "SPRING 2015",
-    motto: "El Castillo Impenetrable",
-    hermanos: ["Hermano Jonathan Antonio Diaz"],
-  },
-  {
-    id: "omicron",
-    line: "OMICRON LINE",
-    term: "SPRING 2019",
-    motto: "Los Soles de Renacimiento",
-    hermanos: ["Hermano Frank Lorenzo Valdez Leal", "Hermano Mauro Kevin Quiroga Claros"],
-  },
-  {
-    id: "pi",
-    line: "PI LINE",
-    term: "SPRING 2021",
-    motto: "Los Cuatro Pilares de Valor",
-    hermanos: [
-      "Hermano José Martín Sanchez",
-      "Hermano Enmanuel José Baez Peña",
-      "Hermano Rayness Ricardo Mollinedo-Rodriguez",
-      "Hermano John Bryan Corado",
-    ],
-  },
-  {
-    id: "rho",
-    line: "RHO LINE",
-    term: "SPRING 2022",
-    motto: "Los Hombres Renacentistas",
-    hermanos: [
-      "Hermano Bryan Osmar Contreras",
-      "Hermano Daniel Ernesto Alvarenga Martinez",
-      "Hermano Noel Ayala Gallo",
-    ],
-  },
-  {
-    id: "sigma",
-    line: "SIGMA LINE",
-    term: "FALL 2022",
-    motto: "Los Guerreros de Raices Resilientes",
-    hermanos: ["Hermano Irving Uriel Mendez Rivas", "Hermano Derek Jose Rodriguez Contreras"],
-  },
-  {
-    id: "tau",
-    line: "TAU LINE",
-    term: "SPRING 2023",
-    motto: "El Rostro del Futuro",
-    hermanos: ["Hermano Sagar Kumar Dwivedy"],
-  },
-  {
-    id: "upsilon",
-    line: "UPSILON LINE",
-    term: "SPRING 2024",
-    motto: "Los Arquitectos del Destino",
-    hermanos: [
-        {
-    name: "Roy Alcala",
-    gradYear: "2027",
-    major: "Computer Science",
-    title: "Tech Consultant",
-    company: "Ernst & Young",
-    linkedin: "https://www.linkedin.com/in/roy-alcala/",
-    headshot: headshotImage,
-    bio: "sala",
-  },
-      {name: "Hermano Christopher Valencia Ventura", 
-        gradYear: "2027",
-        major: "Mechanical Engineering",
-        title: "pito",
-        company: "HEEHH",
-        linkedin: "https://www.linkedin.com/in/christopher-ventura-9b4107244/",
-        bio: "te voy a montar pija en la cara", 
-        headshot: chrisImage
-      },
-      {name: "Hermano Leon Manuel Arceo", 
-        headshot: leonImage, 
-        bio: "i like taking pictures of people unconsentingly"
-      },
-      {name: "Hermano Brian Flores-Toribio"},
-      {name: "Hermano Sebastián Andrés García-Colón"},
-      {name: "Hermano Moisés Luna Tubbs"},
-      {name: "Hermano César Antonio Martínez"},
-      {name: "Hermano Hamdael Selim Eslaquit"},
-    ],
-  },
-];
+import { useEffect, useState } from "react";
 
 function HermanoCard({ hermano, badge }) {
+  
+  // allow either a string or an object (robust)
+  const h = typeof hermano === "string" ? { name: hermano } : hermano;
+  const {
+    name = "",
+    gradYear = "",
+    major = "",
+    title = "",
+    company = "",
+    linkedin = "",
+    email = "",
+    headshot = "",
+    bio = "",
+  } = h;
 
-const {
-    name,
-    gradYear,
-    major,
-    title,
-    company,
-    linkedin,
-    email,
-    headshot,
-    bio,
-} = hermano;
-const safeName = typeof name === "string" ? name : "";
+  const safeName = String(name || "");
 
 const parts = safeName
   .replace(/^Hermano\s+/i, "")
@@ -229,17 +25,18 @@ const parts = safeName
   .filter(Boolean);
 
 const initials =
-  parts.length === 0 ? "H" :
-  parts.length === 1 ? parts[0][0].toUpperCase() :
-  (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
-
+  parts.length === 0
+    ? "H"
+    : parts.length === 1
+      ? parts[0][0].toUpperCase()
+      : (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
 
   return (
-    <div className="col-12 col-sm-6 col-lg-4">
-      {/* flex column so button aligns */}
-      <div className="alumni-card lul-card h-100 d-flex flex-column position-relative overflow-hidden">
-        {/* badge */}
-        <div className="alumni-badge position-absolute top-0 end-0 m-3">
+    <div className="col-12 col-sm-6 col-lg-4 d-flex">
+      {/* d-flex on the column + h-100 + mt-auto pins button low */}
+      <div className="lul-card h-100 w-100 d-flex flex-column position-relative overflow-hidden">
+        <div className="position-absolute top-0 end-0 m-3 badge rounded-pill"
+          style={{ background: "var(--lul-gold)", color: "#1a1a1a", fontWeight: 700 }}>
           {badge}
         </div>
 
@@ -247,27 +44,24 @@ const initials =
           {/* avatar */}
           <div className="d-flex justify-content-center mt-2">
             <div className="alumni-avatar">
-            {headshot ? (
+              {headshot ? (
                 <img className="alumni-avatar-img" src={headshot} alt={safeName} />
-            ) : (
+              ) : (
                 <div className="alumni-avatar-fallback">{initials || "H"}</div>
-            )}
+              )}
             </div>
           </div>
 
-          {/* name */}
-          <h3 className="alumni-name text-center mt-3 mb-1">{safeName}</h3>
+          <h3 className="text-center mt-3 mb-1">{safeName}</h3>
 
-          {/* major / class */}
           {(major || gradYear) && (
-            <div className="text-center alumni-sub">
+            <div className="text-center text-muted">
               {major}
               {major && gradYear ? " • " : ""}
               {gradYear ? `Class of ${gradYear}` : ""}
             </div>
           )}
 
-          {/* title + company */}
           {(title || company) && (
             <div className="text-center mt-3">
               {title && (
@@ -279,14 +73,12 @@ const initials =
             </div>
           )}
 
-          {/* bio */}
           {bio && (
-            <p className="alumni-bio text-center mt-3 mb-0">
+            <p className="text-center mt-3 mb-0" style={{ opacity: 0.85 }}>
               {bio}
             </p>
           )}
 
-          {/* icons */}
           {(linkedin || email) && (
             <div className="d-flex justify-content-center gap-3 mt-4">
               {linkedin && (
@@ -302,15 +94,55 @@ const initials =
             </div>
           )}
         </div>
+
+        {/* pinned to bottom */}
+        <div className="mt-auto px-4 pb-4">
+          {email ? (
+            <a className="btn btn-lul w-100 py-3" href={`mailto:${email}`}>
+              Contact {safeName.replace(/^Hermano\s+/i, "").split(" ")[0]}…
+            </a>
+          ) : (
+            <button className="btn btn-lul w-100 py-3" disabled>
+              Contact…
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
 }
 
-
-
-
 export default function Hermanos() {
+  const [lines, setLines] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [err, setErr] = useState("");
+
+  useEffect(() => {
+      
+    let alive = true;
+
+    (async () => {
+      try {
+        setLoading(true);
+        setErr("");
+
+        const res = await fetch("/api/alumni"); 
+        if (!res.ok) throw new Error(`API error: ${res.status}`);
+
+        const data = await res.json();
+        if (alive) setLines(Array.isArray(data) ? data : []);
+      } catch (e) {
+        if (alive) setErr(e.message || "Failed to load.");
+      } finally {
+        if (alive) setLoading(false);
+      }
+    })();
+
+    return () => {
+      alive = false;
+    };
+  }, []);
+
   return (
     <div className="theme-classic bg-sand">
       {/* HERO */}
@@ -326,67 +158,53 @@ export default function Hermanos() {
 
           {/* Jump chips */}
           <div className="d-flex flex-wrap justify-content-center gap-2 mt-3">
-            {LINES.map((l) => (
-              <a
-                key={l.id}
-                href={`#${l.id}`}
-                className="btn btn-sm btn-outline-lul"
-              >
-                {l.line.split(" ")[0]}
+            {lines.map((l) => (
+              <a key={l.id} href={`#${l.id}`} className="btn btn-sm btn-outline-lul">
+                {String(l.line || "").split(" ")[0]}
               </a>
             ))}
           </div>
+
+          {loading && <div className="mt-4 text-muted">Loading alumni…</div>}
+          {err && <div className="mt-4 alert alert-danger d-inline-block">{err}</div>}
         </div>
       </section>
 
       {/* LINES */}
       <section className="pb-5">
         <div className="container">
-          {LINES.map((line, hermano_within_line) => (
+          {lines.map((l, idx) => (
             <div
-              key={line.id}
-              id={line.id}
-              className={`py-5 ${hermano_within_line ? "border-top border-dark-subtle" : ""}`}
+              key={l.id}
+              id={l.id}
+              className={`py-5 ${idx ? "border-top border-dark-subtle" : ""}`}
             >
               <div className="d-flex flex-wrap align-items-end justify-content-between gap-3 mb-3">
                 <div>
-                  <div
-                    className="text-uppercase fw-bold"
-                    style={{
-                      color: "var(--lul-brown)",
-                      letterSpacing: ".06em",
-                    }}
-                  >
-                    {line.line} <span className="text-muted">({line.term})</span>
+                  <div className="text-uppercase fw-bold"
+                    style={{ color: "var(--lul-brown)", letterSpacing: ".06em" }}>
+                    {l.line} <span className="text-muted">({l.term})</span>
                   </div>
-                  <div className="text-muted">{line.motto}</div>
+
+                  {/* YOU SAID: motto -> lineName */}
+                  <div className="text-muted">{l.lineName}</div>
                 </div>
 
-                <div
-                  className="badge rounded-pill px-3 py-2"
-                  style={{
-                    background: "var(--lul-gold)",
-                    color: "#1a1a1a",
-                    fontWeight: 700,
-                  }}
-                >
-                  {line.line.split(" ")[0]}
+                <div className="badge rounded-pill px-3 py-2"
+                  style={{ background: "var(--lul-gold)", color: "#1a1a1a", fontWeight: 700 }}>
+                  {String(l.line || "").split(" ")[0]}
                 </div>
               </div>
 
-              <div className="row g-4">
-                {line.hermanos.map((h) => {
-                    const hermanoObj = typeof h === "string" ? { name: h } : h;
-
-                    return (
-                    <HermanoCard
-                        key={`${line.id}-${hermanoObj.name}`}
-                        hermano={hermanoObj}
-                        badge={line.line.split(" ")[0]}
-                    />
-                    );
-                })}
-                </div>
+              <div className="row g-4 align-items-stretch">
+                {(l.hermanos || []).map((h, i) => (
+                  <HermanoCard
+                    key={(typeof h === "string" ? h : h?.name) || `${l.id}-${i}`}
+                    hermano={h}
+                    badge={String(l.line || "").split(" ")[0]}
+                  />
+                ))}
+              </div>
             </div>
           ))}
         </div>
