@@ -220,4 +220,16 @@ export const BASE_LINES = [
       { name: "Hermano Hamdael Selim Eslaquit" },
     ],
   },
+  {
+    id: "phi",
+    key: "PHI",
+    line: "PHI LINE",
+    term: "SPRING 2025",
+    lineName: "Las Huellas de Esperanza",
+    hermanos: [
+      { name: "Daniel Lemus Velasquez" },
+      { name: "Hermano Andrew Belmonte Zurita" },
+      { name: "Hermano Fernando Medrano" },
+    ],
+  },
 ];

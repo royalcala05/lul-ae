@@ -16,20 +16,21 @@ function HermanoCard({ hermano, badge }) {
     bio = "",
   } = h;
 
-  const safeName = String(name || "");
+  const rawName = String(name || "").trim();
+  const baseName = rawName.replace(/^(Hermano|H\.)\s*/i, "").trim();
+  const displayName = /^(Hermano|H\.)\b/i.test(rawName)
+    ? baseName
+      ? `H. ${baseName}`
+      : "H."
+    : rawName;
 
-const parts = safeName
-  .replace(/^Hermano\s+/i, "")
-  .trim()
-  .split(/\s+/)
-  .filter(Boolean);
-
-const initials =
-  parts.length === 0
-    ? "H"
-    : parts.length === 1
-      ? parts[0][0].toUpperCase()
-      : (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  const parts = baseName.split(/\s+/).filter(Boolean);
+  const initials =
+    parts.length === 0
+      ? "H"
+      : parts.length === 1
+        ? parts[0][0].toUpperCase()
+        : (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
 
   return (
     <div className="col-12 col-sm-6 col-lg-4 d-flex">
@@ -45,14 +46,14 @@ const initials =
           <div className="d-flex justify-content-center mt-2">
             <div className="alumni-avatar">
               {headshot ? (
-                <img className="alumni-avatar-img" src={headshot} alt={safeName} />
+                <img className="alumni-avatar-img" src={headshot} alt={displayName} />
               ) : (
                 <div className="alumni-avatar-fallback">{initials || "H"}</div>
               )}
             </div>
           </div>
 
-          <h3 className="text-center mt-3 mb-1">{safeName}</h3>
+          <h3 className="text-center mt-3 mb-1">{displayName}</h3>
 
           {(major || gradYear) && (
             <div className="text-center text-muted">
@@ -99,7 +100,7 @@ const initials =
         <div className="mt-auto px-4 pb-4">
           {email ? (
             <a className="btn btn-lul w-100 py-3" href={`mailto:${email}`}>
-              Contact {safeName.replace(/^Hermano\s+/i, "").split(" ")[0]}…
+              Contact {baseName.split(" ")[0]}…
             </a>
           ) : (
             <button className="btn btn-lul w-100 py-3" disabled>

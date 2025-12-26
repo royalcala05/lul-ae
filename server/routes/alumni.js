@@ -43,7 +43,7 @@ function normalizeName(val = "") {
   return String(val || "")
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
-    .replace(/^Hermano\s+/i, "")
+    .replace(/^(Hermano|H\.)\s*/i, "")
     .replace(/\s+/g, " ")
     .trim()
     .toLowerCase();
