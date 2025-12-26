@@ -107,6 +107,7 @@ export default function Home() {
           <EventsPreview />
         </div>
       </section>
+
     </div>
   );
 }
