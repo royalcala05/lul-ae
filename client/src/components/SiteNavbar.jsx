@@ -14,10 +14,7 @@ export default function SiteNavbar() {
   const navigate = useNavigate();
   const location = useLocation();
 // Example: call this when you click a theme button
-function setTheme(theme) {
-  document.body.classList.remove("theme-classic","theme-institutional","theme-minimal");
-  document.body.classList.add(theme);
-}
+
 
 // setTheme("theme-classic")
 
