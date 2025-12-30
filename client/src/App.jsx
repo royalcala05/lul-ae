@@ -8,6 +8,7 @@ import Philanthropy from "./pages/Philanthropy";
 import Events from "./pages/Events";
 import Contact from "./pages/Contact";
 import Hermanos from "./pages/Hermanos";
+import History from "./pages/History";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/philanthropy" element={<Philanthropy />} />
         <Route path="/events" element={<Events />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/history" element={<History />} />
         <Route path="/Hermanos" element={<Hermanos />} />
       </Routes>
       <SiteFooter />

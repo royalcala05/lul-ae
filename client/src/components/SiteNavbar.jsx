@@ -94,6 +94,7 @@ export default function SiteNavbar() {
 
               <li className="nav-item"><NavLink className="nav-link" to="/philanthropy">Philanthropy</NavLink></li>
               <li className="nav-item"><NavLink className="nav-link" to="/events">Events</NavLink></li>
+              <li className="nav-item"><NavLink className="nav-link" to="/history">Our History</NavLink></li>
               <li className="nav-item"><NavLink className="nav-link" to="/contact">Contact us</NavLink></li>
             </ul>
 
