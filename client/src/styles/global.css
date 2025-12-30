@@ -53,6 +53,10 @@ body{
   pointer-events: none; /* wrapper ignores clicks */
 }
 
+.page-with-fixed-nav{
+  padding-top: 100px;
+}
+
 .lul-nav-pill{
   pointer-events: auto; /* pill is clickable */
   width: min(1080px, calc(100% - 48px));
@@ -176,3 +180,373 @@ body{
   background: rgba(0,0,0,.18);
 }
 
+/* PATHE PAGE */
+
+.pathe-page{
+  background: #1f252b;
+  color: #f2efe9;
+}
+
+.pathe-page + footer{
+  margin-top: 0 !important;
+}
+
+.footer-letters{
+  width: min(760px, 70vw);
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+.site-footer{
+  color: rgba(255,255,255,.55);
+  color: #1b1b1b;
+}
+
+.site-footer-inner{
+  padding: 4.5rem 0 2.5rem;
+}
+
+.site-footer-main{
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: minmax(220px, 1.2fr) minmax(0, 2.2fr);
+  align-items: start;
+}
+
+.site-footer-brand{
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.site-footer-crest{
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+}
+
+.site-footer-brand-text{
+  border-left: 2px solid rgba(27,27,27,.5);
+  padding-left: 1rem;
+}
+
+.site-footer-name{
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.site-footer-tagline{
+  font-size: 1rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.site-footer-columns{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(120px, 1fr));
+  gap: 2rem;
+}
+
+.site-footer-heading{
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: .85rem;
+}
+
+.site-footer-link{
+  font-size: .98rem;
+  margin-bottom: .55rem;
+}
+
+.site-footer-divider{
+  height: 1px;
+  background: rgba(27,27,27,.4);
+  margin: 2.5rem 0 1.5rem;
+}
+
+.site-footer-bottom{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: .95rem;
+}
+
+.site-footer-top{
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  border: 1px solid rgba(27,27,27,.5);
+  background: transparent;
+  padding: .35rem .8rem;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+/* CONTACT PAGE */
+.contact-page{
+  background: var(--lul-sand);
+  color: #1b1b1b;
+}
+
+.contact-wrap{
+  padding: 110px 0 120px;
+}
+
+.contact-card{
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) minmax(320px, 1.2fr);
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 24px 60px rgba(0,0,0,.12);
+  overflow: hidden;
+}
+
+.contact-info{
+  background-color: var(--lul-brown);
+  background-size: 280px;
+  background-repeat: no-repeat;
+  background-position: bottom 20px right 20px;
+  color: #f7f2ea;
+  position: relative;
+}
+
+.contact-info::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(101,56,25,.9), rgba(101,56,25,.75));
+}
+
+.contact-info-inner{
+  position: relative;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-info h2{
+  font-size: 2rem;
+  margin: 0;
+}
+
+.contact-detail{
+  display: grid;
+  gap: .35rem;
+  font-size: .98rem;
+}
+
+.contact-label{
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: .75rem;
+  color: rgba(247,242,234,.7);
+}
+
+.contact-form{
+  padding: 3rem;
+}
+
+.contact-form h3{
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  color: var(--lul-brown);
+}
+
+.contact-form-grid{
+  display: grid;
+  gap: 1.2rem;
+}
+
+.contact-form-grid label{
+  display: grid;
+  gap: .45rem;
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: rgba(27,27,27,.6);
+}
+
+.contact-form-grid input,
+.contact-form-grid textarea{
+  border: 1px solid rgba(101,56,25,.2);
+  border-radius: 10px;
+  padding: .85rem 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.contact-two{
+  display: grid;
+  gap: .8rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.contact-form-grid button{
+  justify-self: start;
+}
+
+@media (max-width: 991px){
+  .contact-card{
+    grid-template-columns: 1fr;
+  }
+
+  .contact-info{
+    background-position: bottom 20px center;
+  }
+
+  .contact-two{
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 991px){
+  .site-footer-main{
+    grid-template-columns: 1fr;
+  }
+
+  .site-footer-columns{
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+  }
+}
+
+@media (max-width: 575px){
+  .site-footer-columns{
+    grid-template-columns: 1fr;
+  }
+
+  .site-footer-brand{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .site-footer-brand-text{
+    border-left: none;
+    padding-left: 0;
+  }
+}
+
+.pathe-hero{
+  padding: 110px 0 90px;
+  text-align: center;
+}
+
+.pathe-crest{
+  width: 190px;
+  height: auto;
+  margin-bottom: 18px;
+}
+
+.pathe-title{
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  margin-bottom: .5rem;
+}
+
+.pathe-lede{
+  max-width: 720px;
+  margin: 0 auto;
+  color: rgba(242,239,233,.75);
+  font-size: 1.05rem;
+}
+
+.pathe-events{
+  background: #eeeae4;
+  color: #1b1b1b;
+  padding: 70px 0 50px;
+}
+
+.pathe-section-title{
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.pathe-event-card{
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0,0,0,.14);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.pathe-event-image,
+.pathe-event-placeholder{
+  height: 200px;
+  width: 100%;
+}
+
+.pathe-event-image{
+  object-fit: cover;
+  display: block;
+}
+
+.pathe-event-placeholder{
+  background: #d6d2cc;
+}
+
+.pathe-event-body{
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.pathe-event-meta{
+  align-self: flex-start;
+  background: var(--lul-red);
+  color: #fff;
+  font-size: .75rem;
+  font-weight: 600;
+  padding: .2rem .5rem;
+  border-radius: 6px;
+}
+
+.pathe-event-title{
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.pathe-event-desc{
+  color: rgba(27,27,27,.78);
+  margin: 0;
+}
+
+.pathe-event-link{
+  color: var(--lul-red);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: .75rem;
+  letter-spacing: .05em;
+}
+
+.pathe-mission{
+  padding: 90px 0 140px;
+  text-align: center;
+  padding-bottom:140px;
+}
+
+
+.pathe-mission-text{
+  max-width: 760px;
+  margin: 0 auto;
+  color: rgba(242,239,233,.75);
+  font-size: 1.15rem;
+  line-height: 1.8;
+}
+
+.pathe-stat{
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  font-weight: 700;
+}
+
+.pathe-stat-label{
+  color: rgba(242,239,233,.7);
+  font-size: 1.05rem;
+}

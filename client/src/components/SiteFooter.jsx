@@ -8,65 +8,60 @@ export default function SiteFooter() {
   const INSTAGRAM_URL = "https://www.instagram.com/lul_ae/";
 
   return (
-    <footer className="bg-brown text-white mt-5 position-relative overflow-hidden">
+    <footer className="site-footer mt-5 position-relative overflow-hidden">
       <img
         src={footerLettersImg}
         alt=""
         aria-hidden="true"
-        className="position-absolute top-50 start-50 translate-middle"
-        style={{ width: "min(720px, 85vw)", opacity: 0.08 }}
+        className="footer-letters position-absolute top-50 start-50 translate-middle"
       />
 
-      <div className="container py-5 position-relative">
-        <div className="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-4">
-          <div className="d-flex align-items-center gap-3">
-            <img
-              src={footerCrestImg}
-              alt="La Unidad Latina crest"
-              style={{ width: 86, height: 86, objectFit: "contain" }}
-            />
-            <div className="ps-3" style={{ borderLeft: "2px solid var(--lul-gold)", maxWidth: 440 }}>
-              <div className="text-uppercase fw-semibold" style={{ color: "var(--lul-gold)" }}>
-                The Alpha Epsilon Chapter of
-              </div>
-              <div className="text-uppercase fw-semibold" style={{ color: "var(--lul-gold)" }}>
-                La Unidad Latina, Lambda Upsilon Lambda Fraternity, Inc.
-              </div>
-              <div className="small" style={{ color: "var(--lul-gold)" }}>
-                Providing access to higher education since December 10, 1999
-              </div>
+      <div className="container site-footer-inner position-relative">
+        <div className="site-footer-main">
+          <div className="site-footer-brand">
+            <img src={footerCrestImg} alt="La Unidad Latina crest" className="site-footer-crest" />
+            <div className="site-footer-brand-text">
+              <div className="site-footer-name">La Unidad Latina</div>
+              <div className="site-footer-name">Lambda Upsilon Lambda</div>
+              <div className="site-footer-tagline">Alpha Epsilon Chapter</div>
             </div>
           </div>
 
-          <div className="text-lg-end">
-            <div className="fw-semibold mb-2" style={{ color: "var(--lul-gold)" }}>
-              Connect with us!
+          <div className="site-footer-columns">
+            <div>
+              <div className="site-footer-heading">About Us</div>
+              <div className="site-footer-link">Mission</div>
+              <div className="site-footer-link">History</div>
+              <div className="site-footer-link">Newsletter</div>
             </div>
-            <div className="d-flex justify-content-lg-end gap-3 fs-3">
-              <a href="#" className="text-decoration-none" style={{ color: "var(--lul-gold)" }} aria-label="Discord">
-                <FaDiscord />
-              </a>
-              <a href="#" className="text-decoration-none" style={{ color: "var(--lul-gold)" }} aria-label="X">
-                <FaXTwitter />
-              </a>
-              <a
-                href={LINKEDIN_URL || "#"}
-                className="text-decoration-none"
-                style={{ color: "var(--lul-gold)" }}
-                aria-label="LinkedIn"
-              >
-                <FaLinkedinIn />
-              </a>
-              <a
-                href={INSTAGRAM_URL || "#"}
-                className="text-decoration-none"
-                style={{ color: "var(--lul-gold)" }}
-                aria-label="Instagram"
-              >
-                <FaInstagram />
-              </a>
+            <div>
+              <div className="site-footer-heading">Support</div>
+              <div className="site-footer-link">Contact</div>
+              <div className="site-footer-link">Donate</div>
+              <div className="site-footer-link">FAQs</div>
+            </div>
+            <div>
+              <div className="site-footer-heading">Social</div>
+              <div className="site-footer-link">Instagram</div>
+              <div className="site-footer-link">LinkedIn</div>
+              <div className="site-footer-link">YouTube</div>
             </div>
           </div>
+        </div>
+
+        <div className="site-footer-divider" />
+
+        <div className="site-footer-bottom">
+          <div>© {new Date().getFullYear()} La Unidad Latina, Lambda Upsilon Lambda</div>
+          <div>Terms of Service</div>
+          <button
+            className="site-footer-top"
+            type="button"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
+            Back to top
+            <span aria-hidden="true">↑</span>
+          </button>
         </div>
       </div>
     </footer>

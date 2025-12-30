@@ -145,7 +145,7 @@ export default function Hermanos() {
   }, []);
 
   return (
-    <div className="theme-classic bg-sand">
+    <div className="theme-classic bg-sand page-with-fixed-nav">
       {/* HERO */}
       <section className="section-pad pt-5">
         <div className="container text-center">
