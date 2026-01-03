@@ -10,6 +10,7 @@ function formatEventDate(value) {
 export default function EventsPreview() {
   const [events, setEvents] = useState([]);
   const [err, setErr] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let alive = true;
@@ -17,12 +18,15 @@ export default function EventsPreview() {
     (async () => {
       try {
         setErr("");
+        setLoading(true);
         const res = await fetch("/api/events");
         if (!res.ok) throw new Error(`API error: ${res.status}`);
         const data = await res.json();
         if (alive) setEvents(Array.isArray(data?.events) ? data.events : []);
       } catch (e) {
         if (alive) setErr(e.message || "Failed to load events.");
+      } finally {
+        if (alive) setLoading(false);
       }
     })();
 
@@ -56,13 +60,14 @@ export default function EventsPreview() {
               <div className="small fw-semibold">
                 {formatEventDate(e.start)} {e.title}
               </div>
-              <div>📌</div>
+              <span className="event-dot" aria-hidden="true" />
             </div>
           ))}
-          {!err && events.length === 0 && (
+          {loading && <div className="text-muted small">Loading events...</div>}
+          {!loading && !err && events.length === 0 && (
             <div className="text-muted small">No upcoming events found.</div>
           )}
-          {err && <div className="text-muted small">{err}</div>}
+          {!loading && err && <div className="text-muted small">{err}</div>}
         </div>
       </div>
     </div>

@@ -87,10 +87,10 @@ export default function AdminInquiries() {
                       <tr key={item.id}>
                         <td>{new Date(item.createdAt).toLocaleString()}</td>
                         <td>
-                          {[item.firstName, item.lastName].filter(Boolean).join(" ") || "—"}
+                          {[item.firstName, item.lastName].filter(Boolean).join(" ") || "N/A"}
                         </td>
                         <td>{item.email}</td>
-                        <td>{item.phone || "—"}</td>
+                        <td>{item.phone || "N/A"}</td>
                         <td className="admin-message">{item.message}</td>
                       </tr>
                     ))}

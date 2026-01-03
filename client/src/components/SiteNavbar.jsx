@@ -79,13 +79,13 @@ export default function SiteNavbar() {
               <li className="nav-item"><NavLink className="nav-link" to="/contact">Contact us</NavLink></li>
             </ul>
 
-            <div className="d-flex align-items-center gap-3 ms-lg-3">
-              <button className="border-0 bg-transparent p-0" aria-label="Menu">
+            <div className="d-flex align-items-center gap-3 ms-lg-3" aria-hidden="true">
+              <span className="border-0 bg-transparent p-0">
                 <img src={ellipseImg} alt="" style={{ width: 34, height: 34 }} />
-              </button>
-              <button className="border-0 bg-transparent p-0" aria-label="Language">
-                <img src={globeImg} alt="Language" style={{ width: 34, height: 34 }} />
-              </button>
+              </span>
+              <span className="border-0 bg-transparent p-0">
+                <img src={globeImg} alt="" style={{ width: 34, height: 34 }} />
+              </span>
             </div>
           </div>
         </div>

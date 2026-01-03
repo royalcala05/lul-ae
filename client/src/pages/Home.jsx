@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import Pillars from "../components/Pillars";
 import EventsPreview from "../components/EventsPreview";
 
@@ -15,10 +16,7 @@ export default function Home() {
   return (
    
     
-    <div className="bg-sand">
-      <body class="theme-classic">
-          <div id="root"></div>
-        </body>
+    <div className="bg-sand theme-classic">
 
 
       {/* HERO */}
@@ -87,7 +85,9 @@ export default function Home() {
                 promotion of Latino culture and its diverse peoples. La Unidad Latina maintains a firm commitment to empower and enrich every community wherein 
                 one finds Latinidad. To this end, our Fraternidad addresses key areas of concern to the Latino community
               </p>
-              <button className="btn btn-lul">Learn More</button>
+              <NavLink className="btn btn-lul" to="/mission">
+                Learn More
+              </NavLink>
             </div>
             
           </div>

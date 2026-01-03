@@ -1,11 +1,10 @@
-import { FaDiscord, FaXTwitter, FaLinkedinIn, FaInstagram } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
 import footerLettersImg from "../assets/footer_letters.png";
 import footerCrestImg from "../assets/footer_lul_crest.png";
 
 export default function SiteFooter() {
   // Paste your social links here.
-  const LINKEDIN_URL = "";
+  const LINKEDIN_URL = "https://www.linkedin.com/feed/";
   const INSTAGRAM_URL = "https://www.instagram.com/lul_ae/";
 
   return (
@@ -49,7 +48,7 @@ export default function SiteFooter() {
             </div>
             <div>
               <div className="site-footer-heading">Social</div>
-              <a className="site-footer-link" href="https://www.instagram.com/lul_ae/" target="_blank" rel="noopener noreferrer">
+              <a className="site-footer-link" href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
                 Instagram
               </a>
               <a className="site-footer-link" href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">

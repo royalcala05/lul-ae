@@ -22,6 +22,14 @@ body{
   box-shadow: var(--lul-shadow);
 }
 
+.event-dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(27,27,27,.65);
+  display: inline-block;
+}
+
 .fade-in{
   opacity: 0;
   transform: translateY(18px);

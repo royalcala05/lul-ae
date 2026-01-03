@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import fratCrestImg from "../assets/Frat_Crest.png";
 import supplyDriveImg from "../assets/supply_drive.jpeg";
 import patheWorkshopImg from "../assets/pathe_workshop.jpeg";
@@ -41,7 +42,9 @@ export default function Philanthropy() {
             by providing scholars with the social,
             educational and emotional support needed to reach these goals.
           </p>
-          <button className="btn btn-lul-red mt-3">Interested in supporting?</button>
+          <NavLink className="btn btn-lul-red mt-3" to="/contact">
+            Interested in supporting?
+          </NavLink>
         </div>
       </section>
 
@@ -61,14 +64,18 @@ export default function Philanthropy() {
                     <div className="pathe-event-meta">{event.date}</div>
                     <h3 className="pathe-event-title">{event.title}</h3>
                     <p className="pathe-event-desc">{event.description}</p>
-                    <button className="btn btn-link p-0 pathe-event-link">Read more</button>
+                    <NavLink className="btn btn-link p-0 pathe-event-link" to="/events">
+                      Read more
+                    </NavLink>
                   </div>
                 </article>
               </div>
             ))}
           </div>
           <div className="text-center mt-4">
-            <button className="btn btn-lul-red">Get involved!</button>
+            <NavLink className="btn btn-lul-red" to="/contact">
+              Get involved!
+            </NavLink>
           </div>
         </div>
       </section>

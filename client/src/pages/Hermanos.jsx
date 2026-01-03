@@ -100,11 +100,11 @@ function HermanoCard({ hermano, badge }) {
         <div className="mt-auto px-4 pb-4">
           {email ? (
             <a className="btn btn-lul w-100 py-3" href={`mailto:${email}`}>
-              Contact {baseName.split(" ")[0]}…
+              Contact {baseName.split(" ")[0]}...
             </a>
           ) : (
             <button className="btn btn-lul w-100 py-3" disabled>
-              Contact…
+              Contact...
             </button>
           )}
         </div>
@@ -166,7 +166,7 @@ export default function Hermanos() {
             ))}
           </div>
 
-          {loading && <div className="mt-4 text-muted">Loading alumni…</div>}
+          {loading && <div className="mt-4 text-muted">Loading alumni...</div>}
           {err && <div className="mt-4 alert alert-danger d-inline-block">{err}</div>}
         </div>
       </section>
