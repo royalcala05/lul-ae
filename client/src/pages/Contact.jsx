@@ -13,25 +13,26 @@ export default function Contact() {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));//get the previous data and update the specific field
   };
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault(); //prevents page reload, like u wont lose progress 
     setStatus({ type: "loading", message: "Sending your message..." });
 
     try {
+      // makes a post call to inquires(becasue we are updateing it with new data)
       const response = await fetch("/api/inquiries", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(formData), //this is teh data being sent in
       });
 
-      if (!response.ok) {
+      if (!response.ok) { //error handling makes sure response is ok
         const data = await response.json().catch(() => ({}));
         throw new Error(data?.error || "Unable to send your message.");
       }
-
+      //if no error is caught from previous "if" we set the status to success
       setStatus({ type: "success", message: "Thanks! We received your message." });
       setFormData({
         firstName: "",
@@ -47,7 +48,7 @@ export default function Contact() {
       });
     }
   };
-
+//this is the actual html being rendered
   return (
     <div className="contact-page page-with-fixed-nav bg-sand">
       <section className="contact-wrap">
