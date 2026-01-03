@@ -1,0 +1,31 @@
+{
+  "inquiries": [
+    {
+      "id": "inq_1767474716769_678",
+      "firstName": "Roy",
+      "lastName": "boy",
+      "email": "roycs21100@gmail.com",
+      "phone": "5712636521",
+      "message": "Hello",
+      "createdAt": "2026-01-03T21:11:56.769Z"
+    },
+    {
+      "id": "inq_1767475868163_9187",
+      "firstName": "Dih",
+      "lastName": "Chris",
+      "email": "roycs21100@gmail.com",
+      "phone": "5712636521",
+      "message": "chrisssyyyy yuhhhauhuahuahuahua",
+      "createdAt": "2026-01-03T21:31:08.163Z"
+    },
+    {
+      "id": "inq_1767475898922_3068",
+      "firstName": "hehy",
+      "lastName": "chris",
+      "email": "roycs21100@gmail.com",
+      "phone": "chirssy",
+      "message": "chrissyauhhhhhuhuhhhh",
+      "createdAt": "2026-01-03T21:31:38.921Z"
+    }
+  ]
+}

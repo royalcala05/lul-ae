@@ -256,6 +256,9 @@ body{
 .site-footer-link{
   font-size: .98rem;
   margin-bottom: .55rem;
+  color: inherit;
+  text-decoration: none;
+  display: block;
 }
 
 .site-footer-divider{
@@ -386,6 +389,18 @@ body{
 
 .contact-form-grid button{
   justify-self: start;
+}
+
+.contact-status{
+  font-size: .95rem;
+}
+
+.contact-status.is-success{
+  color: var(--lul-brown);
+}
+
+.contact-status.is-error{
+  color: var(--lul-red);
 }
 
 @media (max-width: 991px){
@@ -584,6 +599,383 @@ body{
   line-height: 1.6;
 }
 
+/* FAQ PAGE */
+.faq-page{
+  background: var(--lul-sand);
+  color: #1b1b1b;
+}
+
+.faq-hero{
+  padding: 120px 0 70px;
+}
+
+.faq-hero-card{
+  position: relative;
+  background-color: #f7f2ea;
+  background-repeat: no-repeat;
+  background-size: 420px;
+  background-position: right 24px center;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 22px 60px rgba(0,0,0,.12);
+}
+
+.faq-hero-overlay{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(247,242,234,.97), rgba(247,242,234,.92) 60%, rgba(247,242,234,.6));
+}
+
+.faq-hero-content{
+  position: relative;
+  padding: 3.5rem;
+  max-width: 760px;
+}
+
+.faq-hero-content h1{
+  color: var(--lul-brown);
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 1rem;
+}
+
+.faq-hero-content p{
+  color: rgba(27,27,27,.75);
+  line-height: 1.8;
+}
+
+.faq-eyebrow{
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  font-size: .75rem;
+  color: var(--lul-gold);
+  margin-bottom: .8rem;
+}
+
+.faq-section{
+  padding: 40px 0 90px;
+}
+
+.faq-section-alt{
+  padding-top: 10px;
+}
+
+.faq-section-header{
+  max-width: 680px;
+  margin-bottom: 2.5rem;
+}
+
+.faq-section-header h2{
+  color: var(--lul-brown);
+  margin-bottom: .6rem;
+}
+
+.faq-section-header p{
+  color: rgba(27,27,27,.7);
+  line-height: 1.7;
+}
+
+.faq-card-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.faq-card{
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.8rem;
+  box-shadow: 0 16px 40px rgba(0,0,0,.12);
+}
+
+.faq-card h3{
+  margin-bottom: .8rem;
+  color: #1b1b1b;
+}
+
+.faq-card p{
+  color: rgba(27,27,27,.72);
+  line-height: 1.7;
+}
+
+.faq-req-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.8rem;
+}
+
+.faq-req-card{
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 18px 44px rgba(0,0,0,.12);
+}
+
+.faq-req-card h3{
+  color: var(--lul-brown);
+  margin-bottom: 1rem;
+}
+
+.faq-list{
+  margin: 0;
+  padding-left: 1.2rem;
+  color: rgba(27,27,27,.75);
+  line-height: 1.7;
+  display: grid;
+  gap: .6rem;
+}
+
+.faq-qa-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.8rem;
+}
+
+.faq-qa-card{
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.8rem;
+  box-shadow: 0 16px 40px rgba(0,0,0,.12);
+}
+
+.faq-qa-card h3{
+  margin-bottom: .7rem;
+  color: #1b1b1b;
+}
+
+.faq-qa-card p{
+  color: rgba(27,27,27,.72);
+  line-height: 1.7;
+}
+
+/* MISSION PAGE */
+.mission-page{
+  background: var(--lul-sand);
+  color: #1b1b1b;
+}
+
+.mission-hero{
+  padding: 120px 0 70px;
+}
+
+.mission-hero-card{
+  position: relative;
+  background-color: #f7f2ea;
+  background-repeat: no-repeat;
+  background-size: 420px;
+  background-position: right 24px center;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 22px 60px rgba(0,0,0,.12);
+}
+
+.mission-hero-overlay{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(247,242,234,.97), rgba(247,242,234,.92) 60%, rgba(247,242,234,.6));
+}
+
+.mission-hero-content{
+  position: relative;
+  padding: 3.5rem;
+  max-width: 760px;
+}
+
+.mission-hero-content h1{
+  color: var(--lul-brown);
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 1rem;
+}
+
+.mission-hero-content p{
+  color: rgba(27,27,27,.75);
+  line-height: 1.8;
+}
+
+.mission-eyebrow{
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  font-size: .75rem;
+  color: var(--lul-gold);
+  margin-bottom: .8rem;
+}
+
+.mission-section{
+  padding: 40px 0 90px;
+}
+
+.mission-section-alt{
+  padding-top: 10px;
+}
+
+.mission-section-header{
+  max-width: 800px;
+}
+
+.mission-section-header h2{
+  color: var(--lul-brown);
+  margin-bottom: .8rem;
+}
+
+.mission-section-header p{
+  color: rgba(27,27,27,.72);
+  line-height: 1.8;
+}
+
+.mission-grid{
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 2rem;
+}
+
+.mission-card{
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 18px 44px rgba(0,0,0,.12);
+}
+
+.mission-card-wide h2{
+  color: var(--lul-brown);
+  margin-bottom: 1rem;
+}
+
+.mission-card-wide p{
+  color: rgba(27,27,27,.75);
+  line-height: 1.8;
+}
+
+.mission-card h3{
+  color: #1b1b1b;
+  margin-bottom: 1rem;
+}
+
+.mission-list{
+  margin: 0;
+  padding-left: 1.2rem;
+  color: rgba(27,27,27,.75);
+  line-height: 1.7;
+  display: grid;
+  gap: .6rem;
+}
+
+/* ADMIN INQUIRIES PAGE */
+.admin-page{
+  background: var(--lul-sand);
+  color: #1b1b1b;
+}
+
+.admin-hero{
+  padding: 120px 0 60px;
+}
+
+.admin-hero-card{
+  position: relative;
+  background-color: #f7f2ea;
+  background-repeat: no-repeat;
+  background-size: 420px;
+  background-position: right 24px center;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 22px 60px rgba(0,0,0,.12);
+}
+
+.admin-hero-overlay{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(247,242,234,.97), rgba(247,242,234,.92) 60%, rgba(247,242,234,.6));
+}
+
+.admin-hero-content{
+  position: relative;
+  padding: 3.5rem;
+  max-width: 760px;
+}
+
+.admin-hero-content h1{
+  color: var(--lul-brown);
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 1rem;
+}
+
+.admin-hero-content p{
+  color: rgba(27,27,27,.75);
+  line-height: 1.8;
+}
+
+.admin-eyebrow{
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  font-size: .75rem;
+  color: var(--lul-gold);
+  margin-bottom: .8rem;
+}
+
+.admin-section{
+  padding: 20px 0 110px;
+}
+
+.admin-panel{
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 18px 44px rgba(0,0,0,.12);
+}
+
+.admin-login-form{
+  display: grid;
+  gap: 1.2rem;
+  max-width: 420px;
+}
+
+.admin-login-form label{
+  display: grid;
+  gap: .45rem;
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: rgba(27,27,27,.6);
+}
+
+.admin-login-form input{
+  border: 1px solid rgba(101,56,25,.2);
+  border-radius: 10px;
+  padding: .85rem 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.admin-table-wrap{
+  overflow-x: auto;
+}
+
+.admin-table{
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  min-width: 720px;
+}
+
+.admin-table th{
+  text-transform: uppercase;
+  font-size: .75rem;
+  letter-spacing: .1em;
+  color: rgba(27,27,27,.6);
+  padding: .75rem .5rem;
+  border-bottom: 1px solid rgba(27,27,27,.15);
+}
+
+.admin-table td{
+  padding: .9rem .5rem;
+  border-bottom: 1px solid rgba(27,27,27,.08);
+  color: rgba(27,27,27,.78);
+  vertical-align: top;
+}
+
+.admin-message{
+  min-width: 240px;
+  white-space: pre-wrap;
+}
+
 @media (max-width: 991px){
   .history-hero-card{
     background-size: 260px;
@@ -619,6 +1011,53 @@ body{
     max-width: 100%;
     margin-left: 2.5rem;
   }
+
+  .faq-hero-card{
+    background-size: 260px;
+    background-position: right 20px bottom 20px;
+  }
+
+  .faq-hero-content{
+    padding: 2.5rem;
+  }
+
+  .faq-card-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .faq-req-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .faq-qa-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .mission-hero-card{
+    background-size: 260px;
+    background-position: right 20px bottom 20px;
+  }
+
+  .mission-hero-content{
+    padding: 2.5rem;
+  }
+
+  .mission-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .admin-hero-card{
+    background-size: 260px;
+    background-position: right 20px bottom 20px;
+  }
+
+  .admin-hero-content{
+    padding: 2.5rem;
+  }
+
+  .admin-table{
+    min-width: 600px;
+  }
 }
 
 @media (max-width: 575px){
@@ -627,6 +1066,30 @@ body{
   }
 
   .history-hero-content{
+    padding: 2rem;
+  }
+
+  .faq-hero{
+    padding-top: 100px;
+  }
+
+  .faq-hero-content{
+    padding: 2rem;
+  }
+
+  .mission-hero{
+    padding-top: 100px;
+  }
+
+  .mission-hero-content{
+    padding: 2rem;
+  }
+
+  .admin-hero{
+    padding-top: 100px;
+  }
+
+  .admin-hero-content{
     padding: 2rem;
   }
 }

@@ -1,4 +1,5 @@
 import { FaDiscord, FaXTwitter, FaLinkedinIn, FaInstagram } from "react-icons/fa6";
+import { NavLink } from "react-router-dom";
 import footerLettersImg from "../assets/footer_letters.png";
 import footerCrestImg from "../assets/footer_lul_crest.png";
 
@@ -30,21 +31,30 @@ export default function SiteFooter() {
           <div className="site-footer-columns">
             <div>
               <div className="site-footer-heading">About Us</div>
-              <div className="site-footer-link">Mission</div>
-              <div className="site-footer-link">History</div>
-              <div className="site-footer-link">Newsletter</div>
+              <NavLink className="site-footer-link" to="/mission">
+                Mission
+              </NavLink>
+              <NavLink className="site-footer-link" to="/history">
+                History
+              </NavLink>
             </div>
             <div>
               <div className="site-footer-heading">Support</div>
-              <div className="site-footer-link">Contact</div>
-              <div className="site-footer-link">Donate</div>
-              <div className="site-footer-link">FAQs</div>
+              <NavLink className="site-footer-link" to="/contact">
+                Contact
+              </NavLink>
+              <NavLink className="site-footer-link" to="/faq">
+                FAQs
+              </NavLink>
             </div>
             <div>
               <div className="site-footer-heading">Social</div>
-              <div className="site-footer-link">Instagram</div>
-              <div className="site-footer-link">LinkedIn</div>
-              <div className="site-footer-link">YouTube</div>
+              <a className="site-footer-link" href="https://www.instagram.com/lul_ae/" target="_blank" rel="noopener noreferrer">
+                Instagram
+              </a>
+              <a className="site-footer-link" href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">
+                LinkedIn
+              </a>
             </div>
           </div>
         </div>

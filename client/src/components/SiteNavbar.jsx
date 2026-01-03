@@ -72,26 +72,7 @@ export default function SiteNavbar() {
           <div className="collapse navbar-collapse" id="lulNav">
             <ul className="navbar-nav mx-auto gap-lg-3">
               <li className="nav-item"><NavLink className="nav-link" to="/">Home</NavLink></li>
-
-
-              {/* alpha episolon drop down  */}
-              <li className="nav-item">
-                <select
-                  className="nav-link nav-select border-0"
-                  id="alpha-epsilon-dropdown"
-                  value={
-                    location.pathname.startsWith("/alpha-epsilon")
-                      ? location.pathname
-                      : "/alpha-epsilon"
-                  }
-                  onChange={(e) => navigate(e.target.value)}
-                >
-                  <option value="/alpha-epsilon">Alpha Epsilon</option>
-                  <option value="/hermanos">Hermanos</option>
-                  <option value="/alpha-epsilon/history">History</option>
-                </select>
-              </li>
-
+              <li className = "nav-item"><NavLink className="nav-link" to="/hermanos">Hermanos</NavLink></li>
               <li className="nav-item"><NavLink className="nav-link" to="/philanthropy">Philanthropy</NavLink></li>
               <li className="nav-item"><NavLink className="nav-link" to="/events">Events</NavLink></li>
               <li className="nav-item"><NavLink className="nav-link" to="/history">Our History</NavLink></li>

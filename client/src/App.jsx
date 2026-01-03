@@ -9,6 +9,10 @@ import Events from "./pages/Events";
 import Contact from "./pages/Contact";
 import Hermanos from "./pages/Hermanos";
 import History from "./pages/History";
+import Faq from "./pages/Faq";
+import Mission from "./pages/Mission";
+import AdminInquiries from "./pages/AdminInquiries";
+import AdminLogin from "./pages/AdminLogin";
 
 export default function App() {
   return (
@@ -21,6 +25,10 @@ export default function App() {
         <Route path="/events" element={<Events />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/history" element={<History />} />
+        <Route path="/faq" element={<Faq />} />
+        <Route path="/mission" element={<Mission />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin/inquiries" element={<AdminInquiries />} />
         <Route path="/Hermanos" element={<Hermanos />} />
       </Routes>
       <SiteFooter />
