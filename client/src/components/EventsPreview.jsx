@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { apiUrl } from "../lib/api";
 
 function formatEventDate(value) {
   if (!value) return "TBD";
@@ -19,7 +20,7 @@ export default function EventsPreview() {
       try {
         setErr("");
         setLoading(true);
-        const res = await fetch("/api/events");
+        const res = await fetch(apiUrl("/api/events"));
         if (!res.ok) throw new Error(`API error: ${res.status}`);
         const data = await res.json();
         if (alive) setEvents(Array.isArray(data?.events) ? data.events : []);

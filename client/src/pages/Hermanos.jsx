@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { apiUrl } from "../lib/api";
 
 function HermanoCard({ hermano, badge }) {
   
@@ -127,7 +128,7 @@ export default function Hermanos() {
         setLoading(true);
         setErr("");
 
-        const res = await fetch("/api/alumni"); 
+        const res = await fetch(apiUrl("/api/alumni")); 
         if (!res.ok) throw new Error(`API error: ${res.status}`);
 
         const data = await res.json();

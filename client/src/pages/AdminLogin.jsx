@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import fratCrestImg from "../assets/Frat_Crest.png";
+import { apiUrl } from "../lib/api";
 
 export default function AdminLogin() {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ export default function AdminLogin() {
     setStatus({ type: "loading", message: "Signing in..." });
 
     try {
-      const response = await fetch("/api/admin/login", {
+      const response = await fetch(apiUrl("/api/admin/login"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

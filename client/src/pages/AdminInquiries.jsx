@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import fratCrestImg from "../assets/Frat_Crest.png";
+import { apiUrl } from "../lib/api";
 
 export default function AdminInquiries() {
   const navigate = useNavigate();
@@ -12,14 +13,14 @@ export default function AdminInquiries() {
 
     const loadInquiries = async () => {
       try {
-        const authCheck = await fetch("/api/admin/me", { credentials: "include" });
+        const authCheck = await fetch(apiUrl("/api/admin/me"), { credentials: "include" });
         if (!authCheck.ok) {
           if (isMounted) {
             navigate("/admin/login");
           }
           return;
         }
-        const response = await fetch("/api/inquiries", { credentials: "include" });
+        const response = await fetch(apiUrl("/api/inquiries"), { credentials: "include" });
         if (!response.ok) {
           throw new Error("Unable to load inquiries.");
         }

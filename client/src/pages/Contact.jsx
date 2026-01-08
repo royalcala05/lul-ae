@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { apiUrl } from "../lib/api";
 import fratCrestImg from "../assets/Frat_Crest.png";
 
 export default function Contact() {
@@ -22,7 +23,7 @@ export default function Contact() {
 
     try {
       // makes a post call to inquires(becasue we are updateing it with new data)
-      const response = await fetch("/api/inquiries", {
+      const response = await fetch(apiUrl("/api/inquiries"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData), //this is teh data being sent in
