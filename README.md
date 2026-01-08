@@ -1,2 +1,81 @@
-# lul-ae
-LUL - AE Website 
+# LUL-AE Website
+
+React + Vite frontend with an Express API for the Lambda Upsilon Lambda Alumni Engagement site. The API serves alumni directory data (CSV + base lines), upcoming events from Google Calendar, and inquiry submissions with admin-protected access.
+
+## Features
+- Alumni directory built from `server/data/baseLines.js` and `server/data/alumni_profiles.csv`
+- Google Calendar events feed (top 3 upcoming)
+- Inquiry form with lowdb persistence + admin session auth
+- Admin login/logout and session-based access control
+- Headshot URLs resolved from `PUBLIC_S3_BASE`
+
+## Tech Stack
+- Frontend: React 19, Vite, React Router, Bootstrap
+- Backend: Express 5, lowdb, express-session, helmet, rate limiter
+
+## Project Structure
+- `client/` React app (Vite)
+- `server/` Express API
+- `server/data/` CSV data, base lines, inquiry storage
+
+## Setup
+1) Install dependencies
+```bash
+cd server && npm install
+cd ../client && npm install
+```
+
+2) Configure environment variables
+- Create `server/.env` with the variables listed below. Contact Roy for these. 
+
+3) Run the apps (separate terminals)
+```bash
+cd server && npm run dev
+```
+```bash
+cd client && npm run dev
+```
+
+The API runs on `http://localhost:5050` by default. The Vite dev server runs on `http://localhost:5173`.
+
+## Environment Variables (server/.env) Contact Roy for these. 
+Required for core functionality:
+- `PORT` (default `5050`)
+- `CLIENT_ORIGIN` (default `http://localhost:5173`)
+- `SESSION_SECRET` (use a long random string)
+- `ADMIN_USERNAME`
+- `ADMIN_PASSWORD_HASH` (bcrypt hash)
+- `GOOGLE_CALENDAR_API_KEY`
+- `GOOGLE_CALENDAR_ID`
+- `PUBLIC_S3_BASE` (e.g. `https://your-bucket.s3.region.amazonaws.com`)
+
+Notes:
+- Generate a bcrypt hash for `ADMIN_PASSWORD_HASH` using `bcryptjs` or another bcrypt tool.
+- Keep secrets out of version control and rotate any committed credentials.
+
+## API Endpoints
+- `GET /api/health` health check
+- `GET /api/alumni` alumni data merged with CSV extras
+- `GET /api/alumni/debug` debug CSV parsing + headshot URL building
+- `GET /api/events` next 3 upcoming Google Calendar events
+- `POST /api/inquiries` create inquiry
+- `GET /api/inquiries?limit=200` list inquiries (admin only)
+- `POST /api/admin/login` admin login
+- `POST /api/admin/logout` admin logout
+- `GET /api/admin/me` admin session check
+
+## Data Files
+- `server/data/baseLines.js` core line + hermano list
+- `server/data/alumni_profiles.csv` CSV profile extras (bio, LinkedIn, headshot key, etc.)
+- `server/data/inquiries.json` persisted inquiries (lowdb)
+
+## Scripts
+Frontend (`client/`):
+- `npm run dev` start Vite dev server
+- `npm run build` production build
+- `npm run lint` lint
+- `npm run preview` preview build
+
+Backend (`server/`):
+- `npm run dev` start API with nodemon
+- `npm run start` start API
