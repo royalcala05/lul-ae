@@ -74,7 +74,6 @@ export default function SiteNavbar() {
               <li className="nav-item"><NavLink className="nav-link" to="/">Home</NavLink></li>
               <li className = "nav-item"><NavLink className="nav-link" to="/hermanos">Hermanos</NavLink></li>
               <li className="nav-item"><NavLink className="nav-link" to="/philanthropy">Philanthropy</NavLink></li>
-              <li className="nav-item"><NavLink className="nav-link" to="/events">Events</NavLink></li>
               <li className="nav-item"><NavLink className="nav-link" to="/history">Our History</NavLink></li>
               <li className="nav-item"><NavLink className="nav-link" to="/contact">Contact us</NavLink></li>
             </ul>
@@ -82,9 +81,6 @@ export default function SiteNavbar() {
             <div className="d-flex align-items-center gap-3 ms-lg-3" aria-hidden="true">
               <span className="border-0 bg-transparent p-0">
                 <img src={ellipseImg} alt="" style={{ width: 34, height: 34 }} />
-              </span>
-              <span className="border-0 bg-transparent p-0">
-                <img src={globeImg} alt="" style={{ width: 34, height: 34 }} />
               </span>
             </div>
           </div>

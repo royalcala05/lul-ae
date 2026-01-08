@@ -43,7 +43,7 @@ export default function SiteFooter() {
                 Contact
               </NavLink>
               <NavLink className="site-footer-link" to="/faq">
-                FAQs
+                FAQs (Membership & Induction)
               </NavLink>
             </div>
             <div>

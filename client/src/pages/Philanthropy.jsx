@@ -64,18 +64,12 @@ export default function Philanthropy() {
                     <div className="pathe-event-meta">{event.date}</div>
                     <h3 className="pathe-event-title">{event.title}</h3>
                     <p className="pathe-event-desc">{event.description}</p>
-                    <NavLink className="btn btn-link p-0 pathe-event-link" to="/events">
-                      Read more
-                    </NavLink>
                   </div>
                 </article>
               </div>
             ))}
           </div>
           <div className="text-center mt-4">
-            <NavLink className="btn btn-lul-red" to="/contact">
-              Get involved!
-            </NavLink>
           </div>
         </div>
       </section>
