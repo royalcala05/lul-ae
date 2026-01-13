@@ -13,6 +13,7 @@ import Faq from "./pages/Faq";
 import Mission from "./pages/Mission";
 import AdminInquiries from "./pages/AdminInquiries";
 import AdminLogin from "./pages/AdminLogin";
+import AdminUploads from "./pages/AdminUploads";
 
 export default function App() {
   return (
@@ -29,6 +30,7 @@ export default function App() {
         <Route path="/mission" element={<Mission />} />
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin/inquiries" element={<AdminInquiries />} />
+        <Route path="/admin/uploads" element={<AdminUploads />} />
         <Route path="/Hermanos" element={<Hermanos />} />
       </Routes>
       <SiteFooter />

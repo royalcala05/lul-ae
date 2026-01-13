@@ -16,7 +16,7 @@ function getPublicS3Base() {
   return String(process.env.PUBLIC_S3_BASE || "").replace(/\/+$/, "");
 }
 
-// Robustly get a column even if headers have extra spaces
+// get a column even if headers have extra spaces
 function getCol(row, target) {
   const want = target.toLowerCase().replace(/\s+/g, "");
   const key = Object.keys(row).find(
@@ -57,8 +57,7 @@ function nameKeys(val = "") {
     parts.length >= 2 ? `${parts[0]} ${parts[parts.length - 1]}` : full;
   return Array.from(new Set([full, firstLast]));
 }
-
-// --- DEBUG: verify parsing + S3 url building ---
+//this part is to help verify CSV parsing and URL generation
 router.get("/alumni/debug", (req, res) => {
   try {
     const csvText = fs.readFileSync(CSV_PATH, "utf8");
@@ -160,5 +159,7 @@ router.get("/alumni", (req, res) => {
     res.status(500).json({ error: e.message });
   }
 });
+
+
 
 export default router;

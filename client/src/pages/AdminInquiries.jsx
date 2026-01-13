@@ -8,9 +8,9 @@ export default function AdminInquiries() {
   const [inquiries, setInquiries] = useState([]);
   const [status, setStatus] = useState({ type: "loading", message: "" });
 
-  useEffect(() => {
-    let isMounted = true;
-
+    useEffect (() => {
+      let isMounted = true;
+      
     const loadInquiries = async () => {
       try {
         const authCheck = await fetch(apiUrl("/api/admin/me"), { credentials: "include" });
