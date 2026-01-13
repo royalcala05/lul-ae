@@ -39,7 +39,7 @@ export default function AdminInquiries() {
       }
     };
 
-    loadInquiries();
+    loadInquiries(); //this loads inquiries on component mount
     return () => {
       isMounted = false;
     };

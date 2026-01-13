@@ -188,7 +188,6 @@ export default function Hermanos() {
                     {l.line} <span className="text-muted">({l.term})</span>
                   </div>
 
-                  {/* YOU SAID: motto -> lineName */}
                   <div className="text-muted">{l.lineName}</div>
                 </div>
 

@@ -79,3 +79,24 @@ Frontend (`client/`):
 Backend (`server/`):
 - `npm run dev` start API with nodemon
 - `npm run start` start API
+
+## Updating Production (SSH + S3)
+Frontend is hosted on S3 and the API runs on EC2.
+
+1) Build the frontend locally
+```bash
+cd client
+npm run build
+```
+
+2) Upload `client/dist/` contents to the S3 bucket root (e.g., `lul-ae.com`).
+
+3) SSH into the EC2 server and update the API
+```bash
+ssh -i 02_19_1982_thirteen_1999_ps.pem ubuntu@44.219.247.140 - make sure you cd into the folder with this tho 
+cd /path/to/repo/server - for example: /Users/royalcala/LUL-AE Website/lul-ae/server
+git pull
+npm ci
+pm2 restart lul-api
+```
+4) Purge Cloudflare cache after uploads (Caching -> Purge Everything).

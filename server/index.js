@@ -64,7 +64,7 @@ const adminLimiter = rateLimit({
 
 function requireAdmin(req, res, next) {
   if (req.session?.isAdmin) return next();
-  return res.status(401).json({ error: "Unauthorized" });
+  return res.status(401).json({ error: "Unauthorized" }); //not admin 
 }
 
 app.get("/api/admin/me", (req, res) => {
@@ -76,19 +76,19 @@ app.get("/api/admin/me", (req, res) => {
     username: req.session.adminUser || "admin",
   });
 });
-
+//server checks admin login credentials
 app.post("/api/admin/login", loginLimiter, async (req, res) => {
-  const username = String(req.body?.username || "").trim();
+  const username = String(req.body?.username || "").trim(); //trim removes whitespace
   const password = String(req.body?.password || "");
   const adminUser = String(process.env.ADMIN_USERNAME || "").trim();
   const passwordHash = String(process.env.ADMIN_PASSWORD_HASH || "").trim();
 
-  if (!adminUser || !passwordHash) {
+  if (!adminUser || !passwordHash) { //check if admin credentials are set in env variables
     return res.status(500).json({ error: "Admin credentials not configured." });
   }
 
-  const usernameMatch = username === adminUser;
-  const passwordMatch = await bcrypt.compare(password, passwordHash);
+  const usernameMatch = username === adminUser; //will be set eitehr true or false 
+  const passwordMatch = await bcrypt.compare(password, passwordHash); //will be true or false
 
   if (!usernameMatch || !passwordMatch) {
     return res.status(401).json({ error: "Invalid credentials." });
