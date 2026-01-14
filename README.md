@@ -48,6 +48,10 @@ Required for core functionality:
 - `GOOGLE_CALENDAR_API_KEY`
 - `GOOGLE_CALENDAR_ID`
 - `PUBLIC_S3_BASE` (e.g. `https://your-bucket.s3.region.amazonaws.com`)
+- `AWS_ACCESS_KEY_ID` (upload signing)
+- `AWS_SECRET_ACCESS_KEY` (upload signing)
+- `AWS_REGION` (upload signing)
+- `S3_BUCKET` (upload bucket for signed uploads)
 
 Notes:
 - Generate a bcrypt hash for `ADMIN_PASSWORD_HASH` using `bcryptjs` or another bcrypt tool.
