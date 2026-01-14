@@ -44,6 +44,12 @@ const timeline = [
       "Lambda Upsilon Lambda joins the National Association of Latino Fraternal Organizations (NALFO).",
   },
   {
+    year: "1999",
+    title: "Alpha Epsilon founded",
+    body:
+      "The Alpha Epsilon chapter is founded on December 10, 1999 at the University of Virginia by the Alpha Line (Fall 1999), Las Seis Caras de Solidaridad: Hermano Elmer Orlando Campos, Hermano Cameron Agyei DeBerry, Hermano Muhammad Shoaib Khan Afridi, Hermano Sakwa Sidney Bunyasi, Hermano Eduardo Jose Gonzalez, and Hermano Fadi Bshara Shamma.",
+  },
+  {
     year: "2000s–2020s",
     title: "National reach",
     body:
