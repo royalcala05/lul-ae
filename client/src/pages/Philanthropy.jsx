@@ -2,14 +2,14 @@ import { NavLink } from "react-router-dom";
 import fratCrestImg from "../assets/Frat_Crest.png";
 import supplyDriveImg from "../assets/supply_drive.jpeg";
 import patheWorkshopImg from "../assets/pathe_workshop.jpeg";
-
+import ssp from "../assets/ssp_workshop.png";
 const patheEvents = [
   {
     title: "College Day Event with the SSP Coalition",
-    date: "TBD",
+    date: "4/15",
     description:
       "La Unidad Latina, Lambda Upsilon Lambda Fraternity Inc. partnered with local organizations to support students from Charlottesville high schools.",
-    image: null,
+    image: ssp,
   },
   {
     title: "Career Workshop at Monticello High School",
