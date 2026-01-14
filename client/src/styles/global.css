@@ -100,6 +100,22 @@ body{
 @media (prefers-reduced-motion: reduce){
   .lul-nav-pill{ transition: none !important; }
 }
+
+@media (max-width: 991.98px){
+  .lul-nav-pill{
+    border-radius: 24px;
+    padding: 10px 16px 14px;
+  }
+
+  .lul-nav-pill .navbar-collapse{
+    margin-top: 6px;
+  }
+
+  .lul-nav-pill .navbar-nav{
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
 /* CLASSIC STYLING FOR HERMANO PAGE */
 /* Add: <body class="theme-classic"> */
 /* Classic theme overrides (can be page-only OR global) */

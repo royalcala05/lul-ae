@@ -103,4 +103,6 @@ git pull
 npm ci
 pm2 restart lul-api
 ```
+Note: Update the EC2 security group inbound rule for SSH (port 22) to allow your current public IP (x.x.x.x/32) before connecting.
+
 4) Purge Cloudflare cache after uploads (Caching -> Purge Everything).
