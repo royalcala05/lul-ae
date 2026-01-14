@@ -35,7 +35,7 @@ export default function Philanthropy() {
           <img className="pathe-crest" src={fratCrestImg} alt="Pathe crest" />
           <h1 className="pathe-title">Pathe</h1>
           <p className="pathe-lede">
-            The P.A.T.H.E. initiative is a college focused initiative that is tailored to support Middle School/ High school 
+            The P.A.T.H.E. initiative (Providing Access to Higher Education) is a college focused initiative that is tailored to support Middle School/ High school 
             students in their quest to graduate from a four year college. Our program will support local schools and organizations
             by mentoring future scholars, facilitating college/university tours, providing P.A.T.H.E. initiative workshops and
             advocating for the improvement of our educational system. Hermanos participating in the P.A.T.H.E. will play a key role
