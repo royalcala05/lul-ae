@@ -192,7 +192,6 @@ export const BASE_LINES = [
     lineName: "Los Guerreros de Raices Resilientes",
     hermanos: [
       { name: "Hermano Irving Uriel Mendez Rivas" },
-      { name: "Hermano Derek Jose Rodriguez Contreras" },
     ],
   },
   {
@@ -214,7 +213,7 @@ export const BASE_LINES = [
       { name: "Hermano Christopher Valencia Ventura" },
       { name: "Hermano Leon Manuel Arceo" },
       { name: "Hermano Brian Flores-Toribio" },
-      { name: "Hermano Sebastián Andrés García-Colón" },
+      { name: "Hermano Sebastian Andres Garcia-Colon" },
       { name: "Hermano Moisés Luna Tubbs" },
       { name: "Hermano César Antonio Martínez" },
       { name: "Hermano Hamdael Selim Eslaquit" },
@@ -227,7 +226,7 @@ export const BASE_LINES = [
     term: "SPRING 2025",
     lineName: "Las Huellas de Esperanza",
     hermanos: [
-      { name: "Daniel Lemus Velasquez" },
+      { name: "Hermano Daniel Velasquez Lemus" },
       { name: "Hermano Andrew Belmonte Zurita" },
       { name: "Hermano Fernando Medrano" },
     ],
