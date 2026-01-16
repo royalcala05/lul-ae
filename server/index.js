@@ -15,10 +15,18 @@ import uploadsRouter from "./routes/uploads.js";
 
 const app = express();
 app.set("trust proxy", 1);
-const clientOrigin = String(process.env.CLIENT_ORIGIN || "http://localhost:5173").trim();
+const clientOriginEnv = String(process.env.CLIENT_ORIGIN || "http://localhost:5173");
+const clientOrigins = clientOriginEnv
+  .split(",")
+  .map((val) => val.trim())
+  .filter(Boolean);
 app.use(
   cors({
-    origin: clientOrigin,
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      if (clientOrigins.includes(origin)) return callback(null, true);
+      return callback(new Error("Not allowed by CORS"));
+    },
     credentials: true,
   })
 );
