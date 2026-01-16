@@ -47,7 +47,7 @@ const timeline = [
     year: "1999",
     title: "Alpha Epsilon founded",
     body:
-      "The Alpha Epsilon chapter is founded on December 10, 1999 at the University of Virginia by the Alpha Line (Fall 1999), Las Seis Caras de Solidaridad: Hermano Elmer Orlando Campos, Hermano Cameron Agyei DeBerry, Hermano Muhammad Shoaib Khan Afridi, Hermano Sakwa Sidney Bunyasi, Hermano Eduardo Jose Gonzalez, and Hermano Fadi Bshara Shamma.",
+      "The Alpha Epsilon Chapter of La Unidad Latina, Lambda Upsilon Lambda Fraternity, Inc. was founded here at the University of Virginia and at Virginia Commonwealth University on December 10th, 1999. Our chapter was begun by six young men that were seeking to build a unique space for themselves and others that they could call their own. They accomplished the goal of bridging the University, Latino, and other communities in the founding of a chapter of La Unidad Latina. The founding Hermanos of the Alpha Epsilon Chapter were Salvadoran, African-American, Pakistani, Kenyan, Panamanian, and Jordanian. Even though they were ethnically, nationally, and religiously diverse, or perhaps because of that, they came together to give birth to a chapter of La Unidad Latina that would not only seek to address the needs of the Latino community, but those of many different communities as well.",
   },
   {
     year: "2000s–2020s",
@@ -62,10 +62,10 @@ const timeline = [
       "James Madison University hosts educator Jaime Escalante as a guest speaker.",
   },
   {
-    year: "2018–2024",
-    title: "Chapter returns",
+    year: "2008",
+    title: "Alpha Psi chartered",
     body:
-      "The Epsilon chapter at the University at Buffalo and Buffalo State College closes in 2018 and is reinstated in 2024.",
+      "Hermanos of Alpha Epsilon and Hermanos at VCU initiate the Beta line of Alpha Psi, creating a new charter for those at VCU.",
   },
   {
     year: "2020–2022",

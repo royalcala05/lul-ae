@@ -94,6 +94,8 @@ npm run build
 ```
 
 2) Upload `client/dist/` contents to the S3 bucket root (e.g., `lul-ae.com`).
+   - Update all website buckets (e.g., `lul-ae.com` and `www.lul-ae.com`) so both domains serve the same build.
+   - `lul-headshot-bucket` is for headshots/uploads only.
 
 3) SSH into the EC2 server and update the API
 ```bash
