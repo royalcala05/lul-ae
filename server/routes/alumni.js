@@ -49,31 +49,13 @@ function normalizeName(val = "") {
     .toLowerCase();
 }
 
-function normalizeFilenameBase(val = "") {
-  return String(val || "")
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/\s+/g, "-")
-    .replace(/[^a-z0-9_-]/g, "");
-}
-
 function normalizeHeadshotKey(val = "") {
   const raw = String(val || "").trim().replace(/^\/+/, "");
   if (!raw) return "";
 
-  const withoutBucketDir = raw
+  return raw
     .replace(/^headshots\/headshots\//i, "headshots/")
     .replace(/^headshot\//i, "headshots/");
-
-  const ext = path.extname(withoutBucketDir).toLowerCase();
-  const dirname = path.dirname(withoutBucketDir);
-  const basename = path.basename(withoutBucketDir, ext);
-  const normalizedDir =
-    dirname === "." ? "headshots" : dirname.replace(/^\/+/, "").replace(/\/+$/, "");
-  const normalizedBase = normalizeFilenameBase(basename);
-
-  return `${normalizedDir}/${normalizedBase}${ext}`;
 }
 
 function nameKeys(val = "") {
