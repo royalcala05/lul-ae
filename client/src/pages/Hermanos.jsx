@@ -14,6 +14,7 @@ function HermanoCard({ hermano, badge }) {
     linkedin = "",
     email = "",
     headshot = "",
+    headshotFallbacks = [],
     bio = "",
   } = h;
 
@@ -33,6 +34,18 @@ function HermanoCard({ hermano, badge }) {
         ? parts[0][0].toUpperCase()
         : (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
 
+  const headshotSources = Array.from(
+    new Set([headshot, ...(Array.isArray(headshotFallbacks) ? headshotFallbacks : [])].filter(Boolean))
+  );
+  const [headshotIndex, setHeadshotIndex] = useState(0);
+
+  useEffect(() => {
+    setHeadshotIndex(0);
+  }, [headshot, headshotFallbacks]);
+
+  const currentHeadshot = headshotSources[headshotIndex] || "";
+  const showImage = Boolean(currentHeadshot);
+
   return (
     <div className="col-12 col-sm-6 col-lg-4 d-flex">
       {/* d-flex on the column + h-100 + mt-auto pins button low */}
@@ -46,8 +59,19 @@ function HermanoCard({ hermano, badge }) {
           {/* avatar */}
           <div className="d-flex justify-content-center mt-2">
             <div className="alumni-avatar">
-              {headshot ? (
-                <img className="alumni-avatar-img" src={headshot} alt={displayName} />
+              {showImage ? (
+                <img
+                  className="alumni-avatar-img"
+                  src={currentHeadshot}
+                  alt={displayName}
+                  onError={() => {
+                    if (headshotIndex < headshotSources.length - 1) {
+                      setHeadshotIndex((idx) => idx + 1);
+                    } else {
+                      setHeadshotIndex(headshotSources.length);
+                    }
+                  }}
+                />
               ) : (
                 <div className="alumni-avatar-fallback">{initials || "H"}</div>
               )}

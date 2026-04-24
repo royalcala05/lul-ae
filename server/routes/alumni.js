@@ -34,6 +34,30 @@ function headshotToPublicUrl(val = "") {
   return base ? `${base}/${encodeURI(key)}` : "";
 }
 
+function buildHeadshotUrls(val = "") {
+  const base = getPublicS3Base();
+  const raw = String(val || "").trim();
+  if (!raw) return [];
+  if (/^https?:\/\//i.test(raw)) return [raw];
+
+  const cleanedKey = normalizeHeadshotKey(raw);
+  const dir = path.dirname(cleanedKey);
+  const ext = path.extname(cleanedKey);
+  const baseName = path.basename(cleanedKey, ext);
+  const deAccentedBase = baseName.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+  const keys = [
+    cleanedKey,
+    deAccentedBase !== baseName ? `${dir}/${deAccentedBase}${ext}` : "",
+    baseName.toLowerCase() !== baseName ? `${dir}/${baseName.toLowerCase()}${ext}` : "",
+    deAccentedBase.toLowerCase() !== baseName.toLowerCase()
+      ? `${dir}/${deAccentedBase.toLowerCase()}${ext}`
+      : "",
+  ].filter(Boolean);
+
+  return Array.from(new Set(keys)).map((key) => (base ? `${base}/${encodeURI(key)}` : ""));
+}
+
 function normalizeLineKey(val = "") {
   const token = String(val || "").trim().toUpperCase().split(/\s+/)[0] || "";
   return token.replace(/[^A-Z]/g, "");
@@ -140,6 +164,7 @@ router.get("/alumni", (req, res) => {
         title: getCol(row, "Job Title"),
         email: getCol(row, "Email Address (Optional)"),
         headshot: headshotToPublicUrl(headshotKey),
+        headshotFallbacks: buildHeadshotUrls(headshotKey),
         _ts: ts,
       };
 
