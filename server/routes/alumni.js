@@ -30,7 +30,7 @@ function headshotToPublicUrl(val = "") {
   const v = String(val || "").trim();
   if (!v) return "";
   if (/^https?:\/\//i.test(v)) return v; // already a URL
-  const key = v.replace(/^\/+/, "");
+  const key = normalizeHeadshotKey(v);
   return base ? `${base}/${encodeURI(key)}` : "";
 }
 
@@ -49,13 +49,44 @@ function normalizeName(val = "") {
     .toLowerCase();
 }
 
+function normalizeFilenameBase(val = "") {
+  return String(val || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9_-]/g, "");
+}
+
+function normalizeHeadshotKey(val = "") {
+  const raw = String(val || "").trim().replace(/^\/+/, "");
+  if (!raw) return "";
+
+  const withoutBucketDir = raw
+    .replace(/^headshots\/headshots\//i, "headshots/")
+    .replace(/^headshot\//i, "headshots/");
+
+  const ext = path.extname(withoutBucketDir).toLowerCase();
+  const dirname = path.dirname(withoutBucketDir);
+  const basename = path.basename(withoutBucketDir, ext);
+  const normalizedDir =
+    dirname === "." ? "headshots" : dirname.replace(/^\/+/, "").replace(/\/+$/, "");
+  const normalizedBase = normalizeFilenameBase(basename);
+
+  return `${normalizedDir}/${normalizedBase}${ext}`;
+}
+
 function nameKeys(val = "") {
   const full = normalizeName(val);
   if (!full) return [];
   const parts = full.split(" ").filter(Boolean);
   const firstLast =
     parts.length >= 2 ? `${parts[0]} ${parts[parts.length - 1]}` : full;
-  return Array.from(new Set([full, firstLast]));
+  const firstTwoLast =
+    parts.length >= 3 ? `${parts[0]} ${parts[1]} ${parts[parts.length - 1]}` : "";
+  const withoutMiddle =
+    parts.length >= 3 ? `${parts[0]} ${parts.slice(2).join(" ")}` : "";
+  return Array.from(new Set([full, firstLast, firstTwoLast, withoutMiddle].filter(Boolean)));
 }
 //this part is to help verify CSV parsing and URL generation
 router.get("/alumni/debug", (req, res) => {
