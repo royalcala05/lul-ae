@@ -231,4 +231,17 @@ export const BASE_LINES = [
       { name: "Hermano Fernando Medrano" },
     ],
   },
+  {
+    id: "chi",
+    key: "CHI",
+    line: "CHI LINE",
+    term: "SPRING 2026",
+    lineName: "Los Prendefuegos de Pasión",
+    hermanos: [
+      { name: "Hermano Oshil Ghimire" },
+      { name: "Hermano Ovadiah Arciga" },
+      { name: "Hermano Ayael Eslaquit" },
+    ],
+  },
+
 ];
