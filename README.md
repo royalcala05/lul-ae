@@ -73,6 +73,15 @@ Notes:
 - `server/data/alumni_profiles.csv` CSV profile extras (bio, LinkedIn, headshot key, etc.)
 - `server/data/inquiries.json` persisted inquiries (lowdb)
 
+## Alumni CSV Notes
+- The API only reads `server/data/alumni_profiles.csv`. Do not rely on alternate files such as `alumni_profiles2.csv` in production unless you rename/copy them to `alumni_profiles.csv`.
+- Alumni data is merged by line and by a normalized version of the hermano name. Shorter CSV names can work, but exact matches are safest.
+- `HeadshotKey` should match the real object key in `lul-headshot-bucket` as closely as possible. S3 keys are case-sensitive.
+- `.jpg` and `.jpeg` are different object names. Do not assume they are interchangeable.
+- Prefer keys in the form `headshots/<filename>` and avoid malformed paths such as `headshot/...` or `headshots/headshots/...`.
+- If a headshot file was renamed in S3, update the matching `HeadshotKey` in `server/data/alumni_profiles.csv`.
+- If an alumni image is missing, check `https://api.lul-ae.com/api/alumni/debug` and compare the CSV `HeadshotKey` to the actual object name in `lul-headshot-bucket`.
+
 ## Scripts
 Frontend (`client/`):
 - `npm run dev` start Vite dev server
@@ -85,7 +94,17 @@ Backend (`server/`):
 - `npm run start` start API
 
 ## Updating Production (SSH + S3)
-Frontend is hosted on S3 and the API runs on EC2.
+Frontend is hosted in S3. The API runs on EC2. Headshots live in a separate S3 bucket.
+
+### Know Which Part Changed
+- `client/` changes: rebuild the frontend and upload `client/dist` contents to the website buckets.
+- `server/` changes: pull on EC2 and restart `pm2`.
+- `server/data/baseLines.js` changes: this is backend data, so update EC2 and restart `pm2`.
+- `server/data/alumni_profiles.csv` changes: this is backend data, so update EC2 and restart `pm2`.
+- New or renamed headshot image files: upload them to `lul-headshot-bucket` and make sure `HeadshotKey` in the CSV matches the real object name.
+
+### Frontend Deploy
+Only do this when something under `client/` changed.
 
 1) Build the frontend locally
 ```bash
@@ -93,18 +112,93 @@ cd client
 npm run build
 ```
 
-2) Upload `client/dist/` contents to the S3 bucket root (e.g., `lul-ae.com`).
-   - Update all website buckets (e.g., `lul-ae.com` and `www.lul-ae.com`) so both domains serve the same build.
-   - `lul-headshot-bucket` is for headshots/uploads only.
+2) Upload the contents of `client/dist/` to the root of both website buckets:
+- `lul-ae.com`
+- `www.lul-ae.com`
 
-3) SSH into the EC2 server and update the API
+Important:
+- Upload the contents of `client/dist`, not a folder named `dist`.
+- After a correct upload, the bucket root should contain files like `index.html`, `assets/`, `favicon.png`, `og-image.png`, and `vite.svg`.
+- Do not upload the frontend build to `lul-headshot-bucket`.
+
+3) Purge Cloudflare cache after uploading the frontend build.
+   - Cloudflare -> Caching -> Purge Everything
+
+### Backend Deploy
+Do this when anything under `server/` changed, including CSV or `baseLines.js`.
+
+1) SSH into EC2
 ```bash
-ssh -i 02_19_1982_thirteen_1999_ps.pem ubuntu@44.219.247.140 - make sure you cd into the folder with this tho 
-cd /path/to/repo/server - for example: /Users/royalcala/LUL-AE Website/lul-ae/server
+ssh -i 02_19_1982_thirteen_1999_ps.pem ubuntu@44.219.247.140
+```
+
+Note:
+- The public IP/DNS may change over time. Confirm the current EC2 public address in the AWS console before connecting.
+- Update the EC2 security group inbound rule for SSH (port `22`) to allow your current public IP (`x.x.x.x/32`) before connecting.
+
+2) Go to the repo and pull the latest code
+```bash
+cd ~/lul-ae
 git pull
+```
+
+3) Install dependencies in the correct directory if needed
+```bash
+cd server
 npm ci
+```
+
+Important:
+- `npm ci` must be run inside `server/` or `client/`, not the repo root.
+- The repo root does not have a `package-lock.json`, so `npm ci` will fail there.
+
+4) Restart the API
+```bash
 pm2 restart lul-api
 ```
-Note: Update the EC2 security group inbound rule for SSH (port 22) to allow your current public IP (x.x.x.x/32) before connecting.
 
-4) Purge Cloudflare cache after uploads (Caching -> Purge Everything).
+5) Check logs if the site still shows old data or returns a `500`
+```bash
+pm2 logs lul-api --lines 50
+curl http://localhost:5050/api/alumni/debug
+curl http://localhost:5050/api/alumni
+```
+
+### Headshot / CSV Update Checklist
+Use this when alumni images or profile data are updated.
+
+1) Update `server/data/alumni_profiles.csv`
+- Keep the filename exactly `alumni_profiles.csv`.
+- Do not leave the production data in `alumni_profiles2.csv` or another alternate filename.
+
+2) If you uploaded or renamed images in S3, verify the CSV `HeadshotKey`
+- Example format: `headshots/roy-alcala.jpg`
+- Match the exact S3 object key, including capitalization, accents, and extension
+- If the S3 object is `bryan-contreras.jpg`, do not point the CSV to `Bryan-Contreras.jpeg`
+
+3) Deploy the backend
+- `git push`
+- `ssh` into EC2
+- `git pull`
+- `cd server && pm2 restart lul-api`
+
+4) Verify the API response directly
+- `https://api.lul-ae.com/api/alumni/debug`
+- `https://api.lul-ae.com/api/alumni`
+
+5) If the frontend still looks stale after the API is correct
+- Hard refresh the browser
+- Purge Cloudflare cache
+
+### Local Testing Notes
+- The backend runs on `http://localhost:5050`.
+- The frontend runs on `http://localhost:5173`.
+- `client/.env` currently points the frontend to production:
+```bash
+VITE_API_BASE_URL=https://api.lul-ae.com
+```
+- If you want to test local backend changes from the local frontend, change `client/.env` to:
+```bash
+VITE_API_BASE_URL=http://localhost:5050
+```
+- Restart the Vite dev server after changing `client/.env`.

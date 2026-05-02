@@ -120,7 +120,7 @@ app.get("/api/health", (req, res) => res.json({ ok: true }));
 app.use("/api", alumniRouter);
 app.use("/api", eventsRouter);
 app.use("/api", adminLimiter, inquiriesRouter);
-app.use("/api", uploadsRouter);
+app.use("/api", requireAdmin, uploadsRouter);
 
 const port = process.env.PORT || 5050;
 app.listen(port, () => console.log(`Server running on ${port}`));
