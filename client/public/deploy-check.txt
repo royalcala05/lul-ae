@@ -1,1 +1,2 @@
 CI/CD deploy pipeline test — safe to delete once the workflow is confirmed working.
+Re-triggered after fixing the lul-app-uploader IAM policy (added S3 access to the lul-ae.com bucket).
