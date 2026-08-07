@@ -10,7 +10,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const dbPath = path.join(__dirname, "..", "data", "inquiries.json");
 const adapter = new JSONFile(dbPath);
-const db = new Low(adapter, { inquiries: [] });
+const db = new Low(adapter, { inquiries: [] }); //this creates a new instance of lowdb which is a simple json library 
 
 async function loadDb() {
   await db.read();

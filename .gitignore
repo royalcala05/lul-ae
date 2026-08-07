@@ -1,3 +1,14 @@
+# Runtime data written by the server at runtime (not source) — tracking
+# these causes `git pull` on the EC2 host to conflict with itself the moment
+# a real inquiry/post comes in and the file drifts from the committed copy.
+# (server/data/inquiries.json is already tracked and already drifted on
+# prod as of this writing — left as-is since untangling it means a one-time
+# manual fixup on the server; not doing that here without sign-off.)
+server/data/blogPosts.json
+
+# Claude Code's own working directory (worktrees, etc.) — not part of the app
+.claude/
+
 # Logs
 logs
 *.log

@@ -13,6 +13,7 @@ export default function AdminInquiries() {
       
     const loadInquiries = async () => {
       try {
+        // ensure only admin can reach 
         const authCheck = await fetch(apiUrl("/api/admin/me"), { credentials: "include" });
         if (!authCheck.ok) {
           if (isMounted) {

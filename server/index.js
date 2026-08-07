@@ -12,6 +12,7 @@ import alumniRouter from "./routes/alumni.js";
 import eventsRouter from "./routes/events.js";
 import inquiriesRouter from "./routes/inquiries.js";
 import uploadsRouter from "./routes/uploads.js";
+import blogPostsRouter from "./routes/blogPosts.js";
 
 const app = express();
 app.set("trust proxy", 1);
@@ -25,7 +26,9 @@ app.use(
     origin: (origin, callback) => {
       if (!origin) return callback(null, true);
       if (clientOrigins.includes(origin)) return callback(null, true);
-      return callback(new Error("Not allowed by CORS"));
+      const err = new Error("Not allowed by CORS");
+      err.status = 403;
+      return callback(err);
     },
     credentials: true,
   })
@@ -73,7 +76,7 @@ const adminLimiter = rateLimit({
 
 function requireAdmin(req, res, next) {
   if (req.session?.isAdmin) return next();
-  return res.status(401).json({ error: "Unauthorized" }); //not admin 
+  return res.status(401).json({ error: "Unauthorized" }); //not admin
 }
 
 app.get("/api/admin/me", (req, res) => {
@@ -116,11 +119,12 @@ app.post("/api/admin/logout", (req, res) => {
 });
 
 app.get("/api/health", (req, res) => res.json({ ok: true }));
-// all these routes are prefixed with api 
+// all these routes are prefixed with api
 app.use("/api", alumniRouter);
 app.use("/api", eventsRouter);
 app.use("/api", adminLimiter, inquiriesRouter);
-app.use("/api", requireAdmin, uploadsRouter);
+app.use("/api", uploadsRouter);
+app.use("/api", blogPostsRouter);
 
 const port = process.env.PORT || 5050;
 app.listen(port, () => console.log(`Server running on ${port}`));

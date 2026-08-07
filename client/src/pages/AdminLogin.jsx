@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import fratCrestImg from "../assets/Frat_Crest.png";
 import { apiUrl } from "../lib/api";
 
 export default function AdminLogin() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [status, setStatus] = useState({ type: "idle", message: "" });
 
@@ -31,7 +32,9 @@ export default function AdminLogin() {
       }
 
       setStatus({ type: "success", message: "Signed in." });
-      navigate("/admin/inquiries");
+      const next = searchParams.get("next") || "";
+      const isSafeNext = next.startsWith("/") && !next.startsWith("//");
+      navigate(isSafeNext ? next : "/admin/inquiries");
     } catch (error) {
       setStatus({
         type: "error",

@@ -8,6 +8,7 @@ React + Vite frontend with an Express API for the Lambda Upsilon Lambda Alumni E
 - Inquiry form with lowdb persistence + admin session auth
 - Admin login/logout and session-based access control
 - Headshot URLs resolved from `PUBLIC_S3_BASE`
+- Blog: hardcoded posts in `client/src/data/blogPosts.js` + brother-submitted posts (admin-gated, `/brothers/write`) stored via lowdb, merged together on `/blog`
 
 ## Tech Stack
 - Frontend: React 19, Vite, React Router, Bootstrap
@@ -67,11 +68,16 @@ Notes:
 - `POST /api/admin/login` admin login
 - `POST /api/admin/logout` admin logout
 - `GET /api/admin/me` admin session check
+- `GET /api/blog-posts` list brother-submitted blog posts (public)
+- `POST /api/blog-posts` create a blog post (admin only — see `client/src/pages/WritePost.jsx`)
+- `DELETE /api/blog-posts/:id` remove a post (admin only)
+- `POST /api/uploads/sign` get a presigned S3 PUT URL + public URL (admin only; `folder: "headshots"` or `"blog"` in the body)
 
 ## Data Files
 - `server/data/baseLines.js` core line + hermano list
 - `server/data/alumni_profiles.csv` CSV profile extras (bio, LinkedIn, headshot key, etc.)
 - `server/data/inquiries.json` persisted inquiries (lowdb)
+- `server/data/blogPosts.json` persisted brother-submitted blog posts (lowdb). **Gitignored on purpose** — it's runtime data that a brother mutates by publishing a post, not source. If it's ever accidentally committed, `git rm --cached server/data/blogPosts.json` before pushing, or the next `git pull` on EC2 will conflict with itself the moment a real post exists.
 
 ## Alumni CSV Notes
 - The API only reads `server/data/alumni_profiles.csv`. Do not rely on alternate files such as `alumni_profiles2.csv` in production unless you rename/copy them to `alumni_profiles.csv`.
@@ -202,3 +208,10 @@ VITE_API_BASE_URL=https://api.lul-ae.com
 VITE_API_BASE_URL=http://localhost:5050
 ```
 - Restart the Vite dev server after changing `client/.env`.
+- Symptom if you forget this is set to production: pages that fetch from the API (alumni directory, calendar events, etc.) silently show nothing when running locally. This is CORS, not a broken API — production's `CLIENT_ORIGIN` only allowlists `https://lul-ae.com` and `https://www.lul-ae.com`, not `http://localhost:5173`, so the browser blocks the response.
+
+**Before deploying, always flip `client/.env` back to production first:**
+```bash
+VITE_API_BASE_URL=https://api.lul-ae.com
+```
+Vite bakes `VITE_API_BASE_URL` into the compiled JS at **build time**, not read at runtime. If you run `npm run build` while `client/.env` still points at `localhost:5050` and upload that `dist/` to S3, prod breaks immediately — every visitor's browser will try to call `localhost:5050`, which doesn't exist for them. `client/.env` is gitignored (per-machine, never committed), so nothing enforces this for you — it's a manual step to double-check before every frontend deploy.

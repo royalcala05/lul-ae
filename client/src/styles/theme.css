@@ -32,3 +32,14 @@
   padding: .55rem 1.1rem;
   font-weight: 600;
 }
+.blog-readmore-link{
+  display: inline-block;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 700;
+  color: var(--lul-brown);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.blog-readmore-link:hover{
+  color: var(--lul-red);
+}

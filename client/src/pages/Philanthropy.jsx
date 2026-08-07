@@ -1,31 +1,7 @@
 import { NavLink } from "react-router-dom";
 import fratCrestImg from "../assets/Frat_Crest.png";
-import supplyDriveImg from "../assets/supply_drive.jpeg";
-import patheWorkshopImg from "../assets/pathe_workshop.jpeg";
-import ssp from "../assets/ssp_workshop.png";
-const patheEvents = [
-  {
-    title: "College Day Event with the SSP Coalition",
-    date: "4/15/25",
-    description:
-      "La Unidad Latina, Lambda Upsilon Lambda Fraternity Inc. partnered with local organizations to support students from Charlottesville high schools.",
-    image: ssp,
-  },
-  {
-    title: "Career Workshop at Monticello High School",
-    date: "10/21/24",
-    description:
-      "Brothers hosted a career workshop with students, sharing practical advice and mentorship.",
-    image: patheWorkshopImg,
-  },
-  {
-    title: "School Supply Drive",
-    date: "10/15/24",
-    description:
-      "We fundraised and donated school supplies for middle school students in need.",
-    image: supplyDriveImg,
-  },
-];
+import EventCard from "../components/EventCard";
+import { patheEvents } from "../data/recentEvents";
 
 export default function Philanthropy() {
   return (
@@ -54,18 +30,7 @@ export default function Philanthropy() {
           <div className="row g-4 mt-2">
             {patheEvents.map((event) => (
               <div key={event.title} className="col-md-6 col-lg-4 d-flex">
-                <article className="pathe-event-card">
-                  {event.image ? (
-                    <img className="pathe-event-image" src={event.image} alt={event.title} />
-                  ) : (
-                    <div className="pathe-event-placeholder" aria-hidden="true" />
-                  )}
-                  <div className="pathe-event-body">
-                    <div className="pathe-event-meta">{event.date}</div>
-                    <h3 className="pathe-event-title">{event.title}</h3>
-                    <p className="pathe-event-desc">{event.description}</p>
-                  </div>
-                </article>
+                <EventCard {...event} tag="Pathe" tagColor="var(--lul-red)" />
               </div>
             ))}
           </div>

@@ -73,6 +73,7 @@ export default function SiteNavbar() {
             <ul className="navbar-nav mx-auto gap-lg-3">
               <li className="nav-item"><NavLink className="nav-link" to="/">Home</NavLink></li>
               <li className = "nav-item"><NavLink className="nav-link" to="/hermanos">Hermanos</NavLink></li>
+              <li className="nav-item"><NavLink className="nav-link" to="/blog">Blog</NavLink></li>
               <li className="nav-item"><NavLink className="nav-link" to="/philanthropy">Philanthropy</NavLink></li>
               <li className="nav-item"><NavLink className="nav-link" to="/history">Our History</NavLink></li>
               <li className="nav-item"><NavLink className="nav-link" to="/contact">Contact us</NavLink></li>
